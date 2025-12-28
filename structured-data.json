@@ -1,0 +1,29 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sukriti Sehgal",
+  "jobTitle": "Data Scientist • AI Engineer",
+  "email": "mailto:sukritisehgal2800@gmail.com",
+  "telephone": "+1-720-939-7944",
+  "url": "https://sukritisehgal-28.github.io/",
+  "homeLocation": {
+    "@type": "Place",
+    "name": "Boulder, CO"
+  },
+  "sameAs": [
+    "https://github.com/sukritisehgal-28",
+    "https://www.linkedin.com/in/sukriti-sehgal28/"
+  ],
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "University of Colorado Boulder",
+      "degree": "MS, Data Science"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Maharaja Surajmal Institute of Technology",
+      "degree": "B.Tech, ECE"
+    }
+  ]
+}

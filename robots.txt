@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sukritisehgal-28.github.io/sitemap.xml
