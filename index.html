@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sukriti Sehgal | Data Scientist • AI Engineer</title>
-  <meta name="description" content="Portfolio of Sukriti Sehgal, Data Scientist and AI Engineer crafting data-driven products, intelligent automation, and high-impact analytics." />
-  <meta name="theme-color" content="#0f1f3d" />
-  <meta name="color-scheme" content="light dark" />
+  <meta name="description"
+    content="Portfolio of Sukriti Sehgal, Data Scientist and AI Engineer crafting data-driven products, intelligent automation, and high-impact analytics." />
+  <meta name="theme-color" content="#030014" />
+  <meta name="color-scheme" content="dark light" />
   <link rel="canonical" href="https://sukritisehgal-28.github.io/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="image" href="assets/hero-bg.svg" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Sukriti Sehgal | Data Scientist • AI Engineer" />
-  <meta property="og:description" content="Data Scientist and AI Engineer based in Boulder, CO focused on predictive analytics, intelligent automation, and immersive data storytelling." />
+  <meta property="og:description"
+    content="Data Scientist and AI Engineer based in Boulder, CO focused on predictive analytics, intelligent automation, and immersive data storytelling." />
   <meta property="og:url" content="https://sukritisehgal-28.github.io/" />
   <meta property="og:image" content="assets/hero-bg.svg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -53,340 +55,446 @@
     ]
   }
   </script>
-  <!-- TODO: Integrate GA4 measurement ID -->
   <link rel="alternate" type="application/json" href="structured-data.json" />
 </head>
+
 <body>
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+    </div>
+  </div>
+
+  <!-- Particle Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursor-dot"></div>
+
+  <!-- Header -->
   <header class="site-header" id="top">
     <div class="header-inner">
       <a href="#hero" class="brand" aria-label="Back to top">Sukriti Sehgal</a>
-      <nav class="site-nav" aria-label="Primary">
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
         <ul>
+          <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
         <span class="theme-icon" aria-hidden="true"></span>
-        <span class="theme-label">Dark Mode</span>
+        <span class="theme-label">Light</span>
       </button>
     </div>
   </header>
+
   <main id="main">
+    <!-- Hero Section -->
     <section class="hero" id="hero">
-      <div class="hero-background" aria-hidden="true">
-        <video class="hero-video" autoplay muted loop playsinline>
-          <source src="assets/hero-video.mp4" type="video/mp4">
-          <!-- Fallback to static background if video doesn't load -->
-        </video>
-      </div>
-      <div class="floating-tags" aria-hidden="true">
-        <div class="floating-tag" data-target="projects" data-keyword="ai" style="--x: 15%; --y: 55%; --delay: 0s;">#AI</div>
-        <div class="floating-tag" data-target="projects" data-keyword="computer vision" style="--x: 75%; --y: 58%; --delay: 0.5s;">#ComputerVision</div>
-        <div class="floating-tag" data-target="projects" data-keyword="react" style="--x: 8%; --y: 72%; --delay: 1s;">#React</div>
-        <div class="floating-tag" data-target="projects" data-keyword="yolo" style="--x: 85%; --y: 75%; --delay: 1.5s;">#YOLOv11</div>
-        <div class="floating-tag" data-target="projects" data-keyword="nlp" style="--x: 30%; --y: 62%; --delay: 2s;">#NLP</div>
-        <div class="floating-tag" data-target="projects" data-keyword="python" style="--x: 65%; --y: 65%; --delay: 2.5s;">#Python</div>
-      </div>
+      <!-- Ambient Glow Orbs -->
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
       <div class="hero-content" data-animate="fade-up">
         <div class="hero-centered">
-          <p class="hero-intro">Boulder, CO • Email: <a href="mailto:sukritisehgal2800@gmail.com">sukritisehgal2800@gmail.com</a></p>
-          <h1 class="hero-name">Sukriti Sehgal</h1>
-          <p class="hero-tagline"><span class="typed" data-typed="Data Science &amp; AI Professional | M.S. Data Science @ CU Boulder"></span></p>
-          <p class="hero-summary">I build intelligent data products that accelerate decisions, automate insight generation, and create measurable value across marketing, product, and public-impact initiatives.</p>
-          <div class="hero-ctas">
-            <a class="btn primary" href="assets/Sukriti_Resume.pdf" download>Download Resume</a>
-            <a class="btn ghost" href="#contact">Contact Me</a>
+          <div class="hero-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Available for Opportunities</span>
           </div>
+
+          <p class="hero-intro">Boulder, CO</p>
+
+          <h1 class="hero-name">Sukriti Sehgal</h1>
+
+          <p class="hero-tagline">
+            <span class="typed" data-typed="Data Scientist & AI Engineer | M.S. Data Science @ CU Boulder"></span>
+          </p>
+
+          <p class="hero-summary">I build intelligent data products that accelerate decisions, automate insight
+            generation, and create measurable value across marketing, product, and public-impact initiatives.</p>
+
+          <div class="hero-ctas">
+            <a class="btn primary" href="assets/Sukriti_Resume.pdf" download>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download Resume
+            </a>
+            <a class="btn ghost" href="#contact">Let's Connect</a>
+          </div>
+
           <div class="hero-social" aria-label="Social links">
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" aria-label="GitHub"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
-            <a href="https://www.linkedin.com/in/sukriti-sehgal28/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.4c0-1.29-.02-2.96-1.81-2.96-1.81 0-2.09 1.41-2.09 2.86v5.5H9.45V9h3.41v1.56h.05c.48-.9 1.66-1.85 3.42-1.85 3.66 0 4.34 2.41 4.34 5.54v6.2zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" aria-label="GitHub"
+              data-magnetic>
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                <path
+                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/sukriti-sehgal28/" target="_blank" rel="noopener" aria-label="LinkedIn"
+              data-magnetic>
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+                <path
+                  d="M20.45 20.45h-3.55v-5.4c0-1.29-.02-2.96-1.81-2.96-1.81 0-2.09 1.41-2.09 2.86v5.5H9.45V9h3.41v1.56h.05c.48-.9 1.66-1.85 3.42-1.85 3.66 0 4.34 2.41 4.34 5.54v6.2zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
+              </svg>
+            </a>
+            <a href="mailto:sukritisehgal2800@gmail.com" target="_blank" rel="noopener" aria-label="Email"
+              data-magnetic>
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- About Section -->
     <section class="about" id="about" data-animate="fade-up">
       <div class="about-container">
         <div class="section-header">
-          <h2>About</h2>
+          <h2>About Me</h2>
         </div>
-        <div class="section-body">
-          <p>Sukriti Sehgal is a Boulder-based Data Scientist and AI Engineer crafting predictive intelligence across consumer, healthcare, education, and public-sector domains. She integrates cloud data engineering, machine learning, and real-time analytics to accelerate decision-making and elevate user experiences. From building intelligent automation systems at GoodieBag Food Co. to developing predictive ROI models at C5 Consultare/University of Denver, and delivering production-grade ML systems for DRDO and Omdena teams, she builds solutions that balance technical rigor with practical usability. Sukriti is currently pursuing her MS in Data Science at the University of Colorado Boulder (GPA: 3.8), where she serves as Chair of the Data Science Student Association, pairing research depth with agile product delivery.</p>
+        <div class="about-content">
+          <div class="about-photo">
+            <img src="images/profile.jpg" alt="Sukriti Sehgal" loading="lazy" />
+          </div>
+          <div class="section-body">
+            <p>I'm a Boulder-based Data Scientist and AI Engineer crafting predictive intelligence across consumer,
+              healthcare, education, and public-sector domains. I integrate cloud data engineering, machine learning,
+              and real-time analytics to accelerate decision-making and elevate user experiences.</p>
+            <br>
+            <p>From building intelligent automation systems at GoodieBag Food Co. to developing predictive ROI models at
+              C5 Consultare/University of Denver, and delivering production-grade ML systems for DRDO and Omdena teams—I
+              build solutions that balance technical rigor with practical usability.</p>
+            <br>
+            <p>Currently pursuing my MS in Data Science at University of Colorado Boulder (GPA: 3.8), where I serve as
+              <strong>Chair of the Data Science Student Association</strong>, pairing research depth with agile product
+              delivery.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Experience Section -->
     <section class="experience" id="experience" data-animate="fade-up">
       <div class="section-header">
         <h2>Experience</h2>
-        <p>Timeline of high-impact data science initiatives delivered across startups, research labs, and government innovation teams.</p>
+        <p>High-impact data science initiatives across startups, research labs, and government innovation teams.</p>
       </div>
       <div class="timeline" aria-label="Professional experience timeline">
-        <article class="timeline-item" data-animate="reveal">
+        <article class="timeline-item" data-animate="fade-up">
           <div class="timeline-marker" aria-hidden="true"></div>
           <div class="timeline-content">
             <h3>Data Science Intern · GoodieBag Food Co.</h3>
-            <p class="timeline-meta">Jun 2025–Present · Boulder, CO</p>
+            <p class="timeline-meta">Jun 2025 – Present · Boulder, CO</p>
             <ul>
-              <li>Built a LangChain-based marketing agent to automate caption and story generation, improving content creation speed by 55%.</li>
-              <li>Developed SQL pipelines computing 20+ KPIs across sales and marketing data, powering weekly reporting for 10 stakeholders to optimize campaigns.</li>
-              <li>Built Tableau dashboards tracking ROI, engagement, and retention across 7+ campaigns; insights supported marketing decisions impacting 20k+ active app users.</li>
-              <li>Integrated an NLP-powered support chatbot into the app by connecting Flutter UI with a FastAPI backend, enabling intent-aware responses and structured ticket data capture.</li>
-              <li>Orchestrated n8n automation pipelines to route chatbot outputs through AI agents for tagging, summarization, and workflow handoff.</li>
+              <li>Built a LangChain-based marketing agent to automate caption and story generation, improving content
+                creation speed by 55%.</li>
+              <li>Developed SQL pipelines computing 20+ KPIs across sales and marketing data, powering weekly reporting
+                for 10 stakeholders.</li>
+              <li>Built Tableau dashboards tracking ROI, engagement, and retention across 7+ campaigns; insights
+                supported marketing decisions impacting 20k+ active app users.</li>
+              <li>Integrated an NLP-powered support chatbot into the app by connecting Flutter UI with a FastAPI
+                backend.</li>
+              <li>Orchestrated n8n automation pipelines to route chatbot outputs through AI agents for tagging,
+                summarization, and workflow handoff.</li>
             </ul>
           </div>
         </article>
-        <article class="timeline-item" data-animate="reveal">
+        <article class="timeline-item" data-animate="fade-up">
           <div class="timeline-marker" aria-hidden="true"></div>
           <div class="timeline-content">
-            <h3>Data Analytics &amp; Application Development Intern · C5 Consultare / University of Denver</h3>
-            <p class="timeline-meta">Sept 2025–Present · Arvada, CO</p>
+            <h3>Data Analytics & Application Development Intern · C5 Consultare / University of Denver</h3>
+            <p class="timeline-meta">Sept 2025 – Present · Arvada, CO</p>
             <ul>
-              <li>Developed predictive regression models for ROI and debt-to-income forecasting using Python (Pandas, NumPy, scikit-learn), enabling program-level repayment estimation.</li>
-              <li>Built stakeholder-facing dashboards for repayment, ROI, and sensitivity analysis across 4.99%–8.05% interest-rate scenarios.</li>
-              <li>Engineered a multi-state analytics dataset by standardizing College Scorecard + FREOPP into a unified schema for cross-state ROI and debt-burden comparisons.</li>
-              <li>Automated data cleaning and feature engineering pipelines for 100k+ records; reduced runtime by 20% and improved reproducibility for iterative research deliverables.</li>
+              <li>Developed predictive regression models for ROI and debt-to-income forecasting using Python (Pandas,
+                NumPy, scikit-learn).</li>
+              <li>Built stakeholder-facing dashboards for repayment, ROI, and sensitivity analysis across 4.99%–8.05%
+                interest-rate scenarios.</li>
+              <li>Engineered a multi-state analytics dataset by standardizing College Scorecard + FREOPP into a unified
+                schema.</li>
+              <li>Automated data cleaning and feature engineering pipelines for 100k+ records; reduced runtime by 20%.
+              </li>
             </ul>
           </div>
         </article>
-        <article class="timeline-item" data-animate="reveal">
+        <article class="timeline-item" data-animate="fade-up">
           <div class="timeline-marker" aria-hidden="true"></div>
           <div class="timeline-content">
             <h3>Machine Learning Engineer Intern · Omdena</h3>
-            <p class="timeline-meta">Nov 2023–Jun 2024 · Remote - Global</p>
+            <p class="timeline-meta">Nov 2023 – Jun 2024 · Remote - Global</p>
             <ul>
-              <li>Improved tuberculosis risk prediction pipeline using TensorFlow by optimizing preprocessing, training, and evaluation against project benchmarks (e.g., accuracy/AUC).</li>
-              <li>Collaborated in a global Agile team to ship an end-to-end TB risk prototype (model + Streamlit app), integrating preprocessing, training, and evaluation by deadline.</li>
+              <li>Improved tuberculosis risk prediction pipeline using TensorFlow by optimizing preprocessing, training,
+                and evaluation.</li>
+              <li>Collaborated in a global Agile team to ship an end-to-end TB risk prototype (model + Streamlit app) by
+                deadline.</li>
             </ul>
           </div>
         </article>
-        <article class="timeline-item" data-animate="reveal">
+        <article class="timeline-item" data-animate="fade-up">
           <div class="timeline-marker" aria-hidden="true"></div>
           <div class="timeline-content">
             <h3>Machine Learning Intern · DRDO</h3>
-            <p class="timeline-meta">Oct 2022–Jan 2023 · New Delhi, India</p>
+            <p class="timeline-meta">Oct 2022 – Jan 2023 · New Delhi, India</p>
             <ul>
-              <li>Implemented secure NLP workflows using one-time/two-time pad encryption techniques for privacy-preserving text processing.</li>
-              <li>Built a Transformer-based summarization pipeline using Hugging Face + spaCy on 10k+ documents; achieved 0.85+ BERTScore while optimizing for high compression and entity preservation.</li>
+              <li>Implemented secure NLP workflows using one-time/two-time pad encryption techniques for
+                privacy-preserving text processing.</li>
+              <li>Built a Transformer-based summarization pipeline using Hugging Face + spaCy on 10k+ documents;
+                achieved 0.85+ BERTScore.</li>
             </ul>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- Projects Section -->
     <section class="projects" id="projects" data-animate="fade-up">
       <div class="section-header">
-        <h2>Projects</h2>
-        <p>Selected data and AI projects highlighting large-scale analytics, intelligent automation, and production ML systems.</p>
+        <h2>Featured Projects</h2>
+        <p>Data and AI projects highlighting large-scale analytics, intelligent automation, and production ML systems.
+        </p>
       </div>
-      <div class="project-slider-container">
-        <button class="slider-arrow slider-prev" aria-label="Previous projects" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <div class="project-slider" id="project-slider">
-          <div class="project-slide active" data-slide="0">
-            <div class="project-grid" aria-live="polite">
-              <article class="project-card pinned" data-keywords="medical ai langchain" data-animate="fade-up">
-                <div class="project-card-header">
-                  <h3>Secure Medical AI</h3>
-                </div>
-                <p>Built a secure clinical documentation platform with role-based dashboards, note templates, and scheduling workflows. Implemented summarization + semantic search with LangChain (GPT-4) and FAISS embeddings for retrieval over clinical notes.</p>
-                <ul class="tech-tags">
-                  <li>React</li>
-                  <li>TypeScript</li>
-                  <li>FastAPI</li>
-                  <li>PostgreSQL</li>
-                  <li>GCP</li>
-                  <li>Docker</li>
-                  <li>LangChain</li>
-                  <li>GPT-4</li>
-                  <li>FAISS</li>
-                </ul>
-                <div class="project-links">
-                  <a href="https://youtu.be/iyclbDlEuXg?si=0ieFKZl1cSTuFTjW" target="_blank" rel="noopener" class="icon-link" aria-label="View demo on YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                  </a>
-                  <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link" aria-label="View repository on GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
-                    </svg>
-                  </a>
-                </div>
-              </article>
-              <article class="project-card pinned" data-keywords="yolo computer vision retail" data-animate="fade-up">
-                <div class="project-card-header">
-                  <h3>OmniShelf AI – Retail Shelf Intelligence</h3>
-                </div>
-                <p>Built an end-to-end shelf intelligence system for product detection, planogram comparison, and out-of-stock alerting. Developed a 3-stage CV pipeline with YOLOv11s fine-tuned on Grozi-120 achieving mAP@50 95.51%, precision 84.89%, recall 88.52%.</p>
-                <ul class="tech-tags">
-                  <li>YOLOv11</li>
-                  <li>FastAPI</li>
-                  <li>React</li>
-                  <li>TypeScript</li>
-                  <li>PostgreSQL</li>
-                  <li>GPT-4o</li>
-                </ul>
-                <div class="project-links">
-                  <a href="https://youtu.be/DcdsqbaZNQo?si=TzF4-vbKSfeaobM5" target="_blank" rel="noopener" class="icon-link" aria-label="View demo on YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                  </a>
-                  <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link" aria-label="View repository on GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
-                    </svg>
-                  </a>
-                </div>
-              </article>
-              <article class="project-card pinned" data-keywords="vr ai interview ar" data-animate="fade-up">
-                <div class="project-card-header">
-                  <h3>InterViewAR – AI-Powered VR Interview Platform 🏆</h3>
-                </div>
-                <p>CalHacks 12.0 Winner (Best ASI Personality Agent). Built an immersive VR interview experience using Fetch.ai agent verse for intelligent conversation flow, Groq Whisper for real-time speech-to-text, FastAPI backend, and WebXR for cross-platform VR compatibility. Delivers personalized interview coaching with AI-driven feedback.</p>
-                <ul class="tech-tags">
-                  <li>Fetch.ai</li>
-                  <li>Groq Whisper</li>
-                  <li>FastAPI</li>
-                  <li>WebXR</li>
-                  <li>Python</li>
-                  <li>VR</li>
-                </ul>
-                <div class="project-links">
-                  <a href="https://medium.com/fetch-ai/agentviewar-building-empathy-into-interviews-with-fetch-ai-agents-e2c6ebb0d8ad" target="_blank" rel="noopener" class="icon-link" aria-label="Read article on Medium">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
-                    </svg>
-                  </a>
-                  <a href="https://devpost.com/software/interviewar" target="_blank" rel="noopener" class="icon-link" aria-label="View project on Devpost">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c.009-2.569-1.096-3.853-3.767-3.853z"/>
-                    </svg>
-                  </a>
-                  <a href="https://github.com/sukritisehgal-28/InterVIew-AR-Calhacks2025" target="_blank" rel="noopener" class="icon-link" aria-label="View repository on GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
-                    </svg>
-                  </a>
-                </div>
-              </article>
-            </div>
+      <div class="project-grid">
+        <article class="project-card pinned" data-animate="fade-up" data-keywords="medical ai langchain">
+          <div class="project-card-header">
+            <h3>Secure Medical AI</h3>
           </div>
-          <div class="project-slide" data-slide="1">
-            <div class="project-grid" aria-live="polite">
-              <article class="project-card" data-keywords="fashion sustainability nlp" data-animate="fade-up">
-                <div class="project-card-header">
-                  <h3>Fashion Sustainability Analysis</h3>
-                </div>
-                <p>Analyzed sustainability practices across fashion brands using NLP and sentiment analysis on 50K+ customer reviews and brand reports. Built classification models to identify greenwashing patterns and genuine eco-friendly initiatives.</p>
-                <ul class="tech-tags">
-                  <li>Python</li>
-                  <li>NLP</li>
-                  <li>Pandas</li>
-                  <li>BERT</li>
-                  <li>Streamlit</li>
-                </ul>
-                <div class="project-links">
-                  <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link" aria-label="View repository on GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
-                    </svg>
-                  </a>
-                </div>
-              </article>
-              <article class="project-card" data-keywords="fandango regression statistics" data-animate="fade-up">
-                <div class="project-card-header">
-                  <h3>Bias Detection in Fandango Ratings</h3>
-                </div>
-                <p>Audited 10K+ movie ratings to confirm score inflation with ~90% statistical confidence using regression analysis and t-tests. Uncovered systematic bias in Fandango's rating system compared to other platforms.</p>
-                <ul class="tech-tags">
-                  <li>Python</li>
-                  <li>Pandas</li>
-                  <li>Statistics</li>
-                  <li>Matplotlib</li>
-                  <li>Seaborn</li>
-                </ul>
-                <div class="project-links">
-                  <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link" aria-label="View repository on GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
-                    </svg>
-                  </a>
-                </div>
-              </article>
-              <article class="project-card" data-keywords="fitness cv computer vision" data-animate="fade-up">
-                <div class="project-card-header">
-                  <h3>AI Fitness Coach</h3>
-                </div>
-                <p>Delivered real-time skeletal tracking with OpenCV and MediaPipe to classify form accuracy at ~90% using cosine similarity. Provides instant feedback on exercise posture and rep counting for home workouts.</p>
-                <ul class="tech-tags">
-                  <li>Python</li>
-                  <li>OpenCV</li>
-                  <li>MediaPipe</li>
-                  <li>TensorFlow</li>
-                  <li>Streamlit</li>
-                </ul>
-                <div class="project-links">
-                  <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link" aria-label="View repository on GitHub">
-                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z"/>
-                    </svg>
-                  </a>
-                </div>
-              </article>
-            </div>
+          <p>Built a secure clinical documentation platform with role-based dashboards, note templates, and scheduling
+            workflows. Implemented summarization + semantic search with LangChain (GPT-4) and FAISS embeddings for
+            retrieval over clinical notes.</p>
+          <ul class="tech-tags">
+            <li>React</li>
+            <li>TypeScript</li>
+            <li>FastAPI</li>
+            <li>PostgreSQL</li>
+            <li>GCP</li>
+            <li>Docker</li>
+            <li>LangChain</li>
+            <li>GPT-4</li>
+            <li>FAISS</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://youtu.be/iyclbDlEuXg?si=0ieFKZl1cSTuFTjW" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View demo on YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View repository on GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
           </div>
-        </div>
-        <button class="slider-arrow slider-next" aria-label="Next projects" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-      <div class="slider-dots">
-        <button class="slider-dot active" data-slide="0" aria-label="Go to slide 1" type="button"></button>
-        <button class="slider-dot" data-slide="1" aria-label="Go to slide 2" type="button"></button>
+        </article>
+
+        <article class="project-card pinned" data-animate="fade-up" data-keywords="yolo computer vision retail">
+          <div class="project-card-header">
+            <h3>OmniShelf AI – Retail Shelf Intelligence</h3>
+          </div>
+          <p>Built an end-to-end shelf intelligence system for product detection, planogram comparison, and out-of-stock
+            alerting. Developed a 3-stage CV pipeline with YOLOv11s fine-tuned on Grozi-120 achieving mAP@50 95.51%,
+            precision 84.89%, recall 88.52%.</p>
+          <ul class="tech-tags">
+            <li>YOLOv11</li>
+            <li>FastAPI</li>
+            <li>React</li>
+            <li>TypeScript</li>
+            <li>PostgreSQL</li>
+            <li>GPT-4o</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://youtu.be/DcdsqbaZNQo?si=TzF4-vbKSfeaobM5" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View demo on YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View repository on GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card pinned" data-animate="fade-up" data-keywords="vr ai interview ar">
+          <div class="project-card-header">
+            <h3>InterViewAR – AI-Powered VR Interview Platform 🏆</h3>
+          </div>
+          <p>CalHacks 12.0 Winner (Best ASI Personality Agent). Built an immersive VR interview experience using
+            Fetch.ai agent verse for intelligent conversation flow, Groq Whisper for real-time speech-to-text, FastAPI
+            backend, and WebXR for cross-platform VR compatibility.</p>
+          <ul class="tech-tags">
+            <li>Fetch.ai</li>
+            <li>Groq Whisper</li>
+            <li>FastAPI</li>
+            <li>WebXR</li>
+            <li>Python</li>
+            <li>VR</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://medium.com/fetch-ai/agentviewar-building-empathy-into-interviews-with-fetch-ai-agents-e2c6ebb0d8ad"
+              target="_blank" rel="noopener" class="icon-link" aria-label="Read article on Medium">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
+              </svg>
+            </a>
+            <a href="https://devpost.com/software/interviewar" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View project on Devpost">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c.009-2.569-1.096-3.853-3.767-3.853z" />
+              </svg>
+            </a>
+            <a href="https://github.com/sukritisehgal-28/InterVIew-AR-Calhacks2025" target="_blank" rel="noopener"
+              class="icon-link" aria-label="View repository on GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card" data-animate="fade-up" data-keywords="fashion sustainability nlp">
+          <div class="project-card-header">
+            <h3>Fashion Sustainability Analysis</h3>
+          </div>
+          <p>Analyzed sustainability practices across fashion brands using NLP and sentiment analysis on 50K+ customer
+            reviews and brand reports. Built classification models to identify greenwashing patterns and genuine
+            eco-friendly initiatives.</p>
+          <ul class="tech-tags">
+            <li>Python</li>
+            <li>NLP</li>
+            <li>Pandas</li>
+            <li>BERT</li>
+            <li>Streamlit</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View repository on GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card" data-animate="fade-up" data-keywords="fandango regression statistics">
+          <div class="project-card-header">
+            <h3>Bias Detection in Fandango Ratings</h3>
+          </div>
+          <p>Audited 10K+ movie ratings to confirm score inflation with ~90% statistical confidence using regression
+            analysis and t-tests. Uncovered systematic bias in Fandango's rating system compared to other platforms.</p>
+          <ul class="tech-tags">
+            <li>Python</li>
+            <li>Pandas</li>
+            <li>Statistics</li>
+            <li>Matplotlib</li>
+            <li>Seaborn</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View repository on GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="project-card" data-animate="fade-up" data-keywords="fitness cv computer vision">
+          <div class="project-card-header">
+            <h3>AI Fitness Coach</h3>
+          </div>
+          <p>Delivered real-time skeletal tracking with OpenCV and MediaPipe to classify form accuracy at ~90% using
+            cosine similarity. Provides instant feedback on exercise posture and rep counting for home workouts.</p>
+          <ul class="tech-tags">
+            <li>Python</li>
+            <li>OpenCV</li>
+            <li>MediaPipe</li>
+            <li>TensorFlow</li>
+            <li>Streamlit</li>
+          </ul>
+          <div class="project-links">
+            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View repository on GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                <path
+                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
+              </svg>
+            </a>
+          </div>
+        </article>
       </div>
       <div class="section-actions">
-        <a class="btn ghost" href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener">View All on GitHub</a>
+        <a class="btn ghost" href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener">View All on
+          GitHub</a>
       </div>
     </section>
 
+    <!-- Skills Section -->
     <section class="skills" id="skills" data-animate="fade-up">
       <div class="section-header">
-        <h2>Skills</h2>
+        <h2>Skills & Expertise</h2>
+        <p>Technologies and methodologies I use to build data-driven solutions.</p>
       </div>
       <div class="skill-groups">
         <div class="skill-group" data-animate="fade-up">
-          <h3>Programming &amp; Data</h3>
+          <h3>Programming & Data</h3>
           <ul>
-            <li>Python (Pandas, NumPy, SciPy)</li>
-            <li>SQL (T-SQL, SparkSQL, HiveQL)</li>
+            <li>Python</li>
+            <li>Pandas</li>
+            <li>NumPy</li>
+            <li>SciPy</li>
+            <li>SQL</li>
+            <li>T-SQL</li>
+            <li>SparkSQL</li>
             <li>R</li>
             <li>Dart</li>
           </ul>
         </div>
         <div class="skill-group" data-animate="fade-up">
-          <h3>ML &amp; AI</h3>
+          <h3>ML & AI</h3>
           <ul>
             <li>Scikit-learn</li>
             <li>TensorFlow</li>
             <li>PyTorch</li>
             <li>Hugging Face</li>
             <li>LangChain</li>
-            <li>Regression</li>
-            <li>Classification</li>
-            <li>Clustering</li>
             <li>NLP</li>
             <li>Deep Learning</li>
             <li>Time Series</li>
           </ul>
         </div>
         <div class="skill-group" data-animate="fade-up">
-          <h3>Data &amp; Cloud</h3>
+          <h3>Data & Cloud</h3>
           <ul>
             <li>PostgreSQL</li>
             <li>MySQL</li>
@@ -398,11 +506,10 @@
             <li>GCP</li>
             <li>Docker</li>
             <li>FastAPI</li>
-            <li>ETL</li>
           </ul>
         </div>
         <div class="skill-group" data-animate="fade-up">
-          <h3>Analytics &amp; Visualization</h3>
+          <h3>Analytics & Visualization</h3>
           <ul>
             <li>Statistical Modeling</li>
             <li>A/B Testing</li>
@@ -412,39 +519,45 @@
             <li>Power BI</li>
             <li>Matplotlib</li>
             <li>Seaborn</li>
-            <li>Git</li>
           </ul>
         </div>
       </div>
     </section>
 
+    <!-- Leadership & Awards -->
     <section class="leadership" id="leadership" data-animate="fade-up">
       <div class="section-header">
-        <h2>Leadership &amp; Awards</h2>
+        <h2>Leadership & Awards</h2>
       </div>
       <div class="leadership-content">
         <article class="leadership-card" data-animate="fade-up">
           <h3>Chair — Data Science Student Association (CU Boulder)</h3>
           <p class="leadership-meta">2024 – Present</p>
           <ul>
-            <li>Leading a student board delivering workshops, speaker events, and community programming for the MS-DS cohort.</li>
+            <li>Leading a student board delivering workshops, speaker events, and community programming for the MS-DS
+              cohort.</li>
           </ul>
         </article>
         <article class="leadership-card" data-animate="fade-up">
-          <h3>CalHacks 12.0 Winner — Best ASI Personality Agent (Fetch.ai Track)</h3>
+          <h3>CalHacks 12.0 Winner — Best ASI Personality Agent</h3>
           <p class="leadership-meta">Oct 2025 · San Francisco, CA</p>
           <ul>
-            <li>Won for InterViewAR, a VR-based AI interview experience using Fetch.ai agent verse, Groq Whisper, FastAPI, and WebXR.</li>
+            <li>Won for InterViewAR, a VR-based AI interview experience using Fetch.ai agent verse, Groq Whisper,
+              FastAPI, and WebXR.</li>
           </ul>
-          <div class="project-links">
-            <a href="https://medium.com/fetch-ai/agentviewar-building-empathy-into-interviews-with-fetch-ai-agents-e2c6ebb0d8ad" target="_blank" rel="noopener" class="icon-link" aria-label="Read article on Medium">
+          <div class="project-links" style="margin-top: 1rem;">
+            <a href="https://medium.com/fetch-ai/agentviewar-building-empathy-into-interviews-with-fetch-ai-agents-e2c6ebb0d8ad"
+              target="_blank" rel="noopener" class="icon-link" aria-label="Read article on Medium">
               <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                <path
+                  d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
               </svg>
             </a>
-            <a href="https://devpost.com/software/interviewar" target="_blank" rel="noopener" class="icon-link" aria-label="View project on Devpost">
+            <a href="https://devpost.com/software/interviewar" target="_blank" rel="noopener" class="icon-link"
+              aria-label="View project on Devpost">
               <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c.009-2.569-1.096-3.853-3.767-3.853z"/>
+                <path
+                  d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c.009-2.569-1.096-3.853-3.767-3.853z" />
               </svg>
             </a>
           </div>
@@ -459,6 +572,7 @@
       </div>
     </section>
 
+    <!-- Education -->
     <section class="education" id="education" data-animate="fade-up">
       <div class="section-header">
         <h2>Education</h2>
@@ -467,65 +581,61 @@
         <article class="education-card" data-animate="fade-up">
           <h3>University of Colorado Boulder</h3>
           <p>MS, Data Science — GPA: 3.8</p>
-          <p class="education-meta">Coursework: Machine Learning, Statistical Modeling, Data Mining, Datacenter Scale Computing, Computer Vision</p>
+          <p class="education-meta">Coursework: Machine Learning, Statistical Modeling, Data Mining, Datacenter Scale
+            Computing, Computer Vision</p>
         </article>
         <article class="education-card" data-animate="fade-up">
           <h3>Maharaja Surajmal Institute of Technology</h3>
-          <p>B.Tech, Electronics and Communication Engineering — GPA: 3.9</p>
+          <p>B.Tech, Electronics and Communication Engineering</p>
+          <p class="education-meta">GPA: 3.9</p>
         </article>
       </div>
     </section>
 
+    <!-- Contact Section -->
     <section class="contact" id="contact" data-animate="fade-up">
       <div class="section-header">
-        <h2>Contact</h2>
-        <p>Let’s collaborate on data products, intelligent analytics, and AI-driven experiences.</p>
+        <h2>Let's Connect</h2>
+        <p>Open to collaborating on data products, intelligent analytics, and AI-driven experiences.</p>
       </div>
       <div class="contact-inner">
         <div class="contact-info">
           <a class="contact-email" href="mailto:sukritisehgal2800@gmail.com">sukritisehgal2800@gmail.com</a>
           <a class="contact-phone" href="tel:+17209397944">720-939-7944</a>
           <div class="contact-social">
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
-            <a href="https://www.linkedin.com/in/sukriti-sehgal28/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/sukriti-sehgal28/" target="_blank" rel="noopener">LinkedIn</a>
           </div>
         </div>
-        <form class="contact-form" novalidate data-form>
-          <div class="form-field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required />
-          </div>
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required />
-          </div>
-          <div class="form-field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button class="btn primary" type="submit">Send Message</button>
-          <p class="form-feedback" role="status" aria-live="polite"></p>
-        </form>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer" data-animate="fade-up">
     <div class="footer-inner">
-      <p>© <span id="current-year"></span> Sukriti Sehgal. All rights reserved.</p>
+      <p>© <span id="current-year"></span> Sukriti Sehgal</p>
       <nav class="footer-nav" aria-label="Footer">
         <a href="#hero">Home</a>
+        <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
-      <button class="theme-toggle secondary" type="button" aria-label="Toggle theme" data-theme-toggle-footer>
+      <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle-footer>
         <span class="theme-icon" aria-hidden="true"></span>
-        <span class="theme-label">Dark Mode</span>
+        <span class="theme-label">Light</span>
       </button>
     </div>
   </footer>
 
+  <script src="particles.js"></script>
   <script src="app.js" defer></script>
+
+  <!-- Vercel Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <!-- Vercel Speed Insights -->
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
+
 </html>
