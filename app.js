@@ -1,463 +1,671 @@
 /**
- * Sukriti Sehgal Portfolio - Main JavaScript
- * Enhanced with custom cursor, scroll animations, and interactive effects
+ * Sukriti Sehgal · Portfolio
+ * Smooth scrolling, header, mobile menu, scroll reveals, "Ask my agents", journey pop-ups,
+ * the projects carousel and its live visualizations, the footer wordmark and the cursor ring.
  */
 
-// ================================================================
-// THEME MANAGEMENT
-// ================================================================
+import Lenis from './vendor/lenis/lenis.mjs';
+import { gradientField } from './gradient-field.js';
+import { JOURNEY } from './data/profile.js';
+import { AGENTS, answerLocally, findNamed } from './data/answer-local.js';
 
-const THEME_STORAGE_KEY = 'sukriti-theme-preference';
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-const root = document.documentElement;
+window.__appReady = true;
 
-const getStoredTheme = () => localStorage.getItem(THEME_STORAGE_KEY);
-
-const applyTheme = (theme) => {
-  const resolved = theme === 'light' ? 'light' : 'dark';
-  root.setAttribute('data-theme', resolved);
-  document.body.dataset.theme = resolved;
-
-  // Update theme color meta tag
-  const themeColor = document.querySelector('meta[name="theme-color"]');
-  if (themeColor) {
-    themeColor.content = resolved === 'dark' ? '#030014' : '#f8fafc';
-  }
-
-  const toggles = document.querySelectorAll('[data-theme-toggle], [data-theme-toggle-footer]');
-  toggles.forEach((btn) => {
-    const label = btn.querySelector('.theme-label');
-    if (label) {
-      label.textContent = resolved === 'dark' ? 'Light' : 'Dark';
-    }
-    btn.setAttribute('aria-pressed', resolved === 'dark' ? 'true' : 'false');
-  });
-};
-
-const initTheme = () => {
-  const stored = getStoredTheme();
-  if (stored) {
-    applyTheme(stored);
-  } else if (prefersDark.matches) {
-    applyTheme('dark');
-  } else {
-    applyTheme('dark'); // Default to dark for cosmic theme
-  }
-};
-
-const toggleTheme = () => {
-  const current = root.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
-  localStorage.setItem(THEME_STORAGE_KEY, next);
-};
-
-document.querySelectorAll('[data-theme-toggle], [data-theme-toggle-footer]').forEach((btn) => {
-  btn.addEventListener('click', toggleTheme);
-});
-
-initTheme();
-
-// Listen for system theme changes
-prefersDark.addEventListener('change', (e) => {
-  if (!getStoredTheme()) {
-    applyTheme(e.matches ? 'dark' : 'light');
-  }
-});
-
-// ================================================================
-// LOADING SCREEN
-// ================================================================
-
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  if (loader) {
-    setTimeout(() => {
-      loader.classList.add('hidden');
-      setTimeout(() => loader.remove(), 500);
-    }, 500);
-  }
-});
-
-// ================================================================
-// CUSTOM CURSOR
-// ================================================================
-
-const cursor = document.getElementById('cursor');
-const cursorDot = document.getElementById('cursor-dot');
-
-if (cursor && cursorDot && window.matchMedia('(hover: hover)').matches) {
-  let mouseX = 0, mouseY = 0;
-  let cursorX = 0, cursorY = 0;
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-
-    // Dot follows immediately
-    cursorDot.style.left = mouseX + 'px';
-    cursorDot.style.top = mouseY + 'px';
-  });
-
-  // Smooth cursor following animation
-  const animateCursor = () => {
-    const dx = mouseX - cursorX;
-    const dy = mouseY - cursorY;
-
-    cursorX += dx * 0.15;
-    cursorY += dy * 0.15;
-
-    cursor.style.left = cursorX + 'px';
-    cursor.style.top = cursorY + 'px';
-
-    requestAnimationFrame(animateCursor);
-  };
-  animateCursor();
-
-  // Hover effects
-  const interactiveElements = document.querySelectorAll('a, button, input, textarea, [data-magnetic]');
-
-  interactiveElements.forEach((el) => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
-  });
-
-  // Hide cursor when leaving window
-  document.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-    cursorDot.style.opacity = '0';
-  });
-
-  document.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    cursorDot.style.opacity = '1';
+// The figures wink and smile with SVG animation; hold them still for people who prefer less motion
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('svg').forEach((svg) => {
+    svg.pauseAnimations?.();
+    svg.setCurrentTime?.(0);
   });
 }
 
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const canObserve = 'IntersectionObserver' in window;
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, reduceMotion ? 0 : ms));
+
 // ================================================================
-// HEADER SCROLL EFFECT
+// SMOOTH SCROLLING
+// Eased wheel/trackpad scrolling and anchor jumps. Touch scrolling stays native,
+// and nothing is smoothed for people who prefer reduced motion.
+// ================================================================
+
+let lenis = null;
+if (!reduceMotion) {
+  try {
+    lenis = new Lenis({ lerp: 0.085, autoRaf: true });
+  } catch {
+    lenis = null;
+  }
+}
+
+const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4);
+
+document.addEventListener('click', (e) => {
+  if (!lenis || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  const link = e.target instanceof Element ? e.target.closest('a[href^="#"]') : null;
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  const target = hash === '#' || hash === '#top' ? 0 : document.getElementById(hash.slice(1));
+  if (target === null) return;
+  e.preventDefault();
+  // A card that hasn't revealed yet still sits lower by its reveal offset; aim for where it settles.
+  const shift = target instanceof Element ? parseFloat(getComputedStyle(target).translate.split(' ')[1]) || 0 : 0;
+  lenis.scrollTo(target, { offset: -shift, duration: 1.3, easing: easeOutQuart });
+  history.pushState(null, '', hash === '#' ? location.pathname : hash);
+});
+
+// ================================================================
+// HEADER + MOBILE MENU
 // ================================================================
 
 const header = document.querySelector('.site-header');
-let lastScroll = 0;
+const nav = document.getElementById('site-nav');
+const menuBtn = document.getElementById('menu-btn');
 
-window.addEventListener('scroll', () => {
-  const currentScroll = window.scrollY;
+const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-  if (currentScroll > 50) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
+const setMenu = (open) => {
+  nav.classList.toggle('is-open', open);
+  menuBtn.setAttribute('aria-expanded', String(open));
+  menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+};
 
-  lastScroll = currentScroll;
-}, { passive: true });
+menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
+nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') setMenu(false);
+});
 
-// ================================================================
-// MOBILE MENU
-// ================================================================
-
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const siteNav = document.getElementById('site-nav');
-
-if (mobileMenuBtn && siteNav) {
-  mobileMenuBtn.addEventListener('click', () => {
-    const isOpen = siteNav.classList.toggle('open');
-    mobileMenuBtn.classList.toggle('active', isOpen);
-    mobileMenuBtn.setAttribute('aria-expanded', isOpen);
-
-    // Prevent body scroll when menu is open
-    document.body.style.overflow = isOpen ? 'hidden' : '';
-  });
-
-  // Close menu when clicking a link
-  siteNav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      siteNav.classList.remove('open');
-      mobileMenuBtn.classList.remove('active');
-      mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+// Highlight the nav link for the section in view
+if (canObserve) {
+  const links = new Map([...nav.querySelectorAll('a[href^="#"]')].map((a) => [a.getAttribute('href').slice(1), a]));
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      links.forEach((link) => link.classList.remove('is-active'));
+      links.get(entry.target.id)?.classList.add('is-active');
     });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  links.forEach((_, id) => {
+    const section = document.getElementById(id);
+    if (section) spy.observe(section);
   });
 }
 
 // ================================================================
-// SMOOTH SCROLL
+// SCROLL REVEAL
 // ================================================================
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    const targetId = link.getAttribute('href');
-    if (targetId.length > 1) {
-      const target = document.querySelector(targetId);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
+const revealEls = document.querySelectorAll('.reveal');
+
+if (canObserve && !reduceMotion) {
+  const revealer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        revealer.unobserve(entry.target);
       }
-    }
-  });
-});
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach((el) => revealer.observe(el));
+} else {
+  revealEls.forEach((el) => el.classList.add('is-in'));
+}
 
 // ================================================================
-// ACTIVE NAV HIGHLIGHT
+// ASK MY AGENTS
+// Live answers stream from /api/ask (five Claude agents + an orchestrator).
+// If that endpoint isn't reachable, the same agents answer offline from data/profile.js.
 // ================================================================
 
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.site-nav a');
+const askForm = document.getElementById('ask-form');
+const askInput = document.getElementById('ask-input');
+const askSubmit = document.getElementById('ask-submit');
+const suggestionBtns = document.querySelectorAll('.suggestion');
+const conversation = document.getElementById('conversation');
+const askPanel = document.getElementById('panel-ask');
+const hubStatus = document.getElementById('hub-status');
+const agentNet = document.getElementById('agent-net');
+// Each agent's node and spoke in the diagram light up as it works
+const netParts = (id) => [...document.querySelectorAll(`.net-node[data-agent="${id}"], .net-spoke[data-agent="${id}"]`)];
+const AGENT_NAMES = Object.fromEntries(AGENTS.map((a) => [a.id, a.name.replace(' agent', '')]));
+// Answers stay short; these links take visitors to the full sections on the page.
+const SECTION_FOR = {
+  experience: ['#journey', 'Journey'],
+  recognition: ['#journey', 'Journey'],
+  education: ['#journey', 'Journey'],
+  projects: ['#projects', 'Projects'],
+  careers: ['#contact', 'Contact'],
+};
+let busy = false;
 
-const highlightNav = () => {
-  const scrollPos = window.scrollY + 150;
+const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const inline = (s) => escapeHtml(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+const BULLET = /^\s*[-•*]\s+/;
 
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    const sectionId = section.getAttribute('id');
+// Small, safe renderer: paragraphs, "- " bullet lists and **bold**. Everything else is escaped.
+const renderAnswer = (text) => text.trim().split(/\n{2,}/).map((block) => {
+  const lines = block.split('\n').filter((l) => l.trim());
+  const first = lines.findIndex((l) => BULLET.test(l));
+  if (first === -1) return `<p>${inline(lines.join(' '))}</p>`;
+  const lead = first > 0 ? `<p>${inline(lines.slice(0, first).join(' '))}</p>` : '';
+  const items = lines.slice(first).map((l) => `<li>${inline(l.replace(BULLET, ''))}</li>`).join('');
+  return `${lead}<ul>${items}</ul>`;
+}).join('');
 
-    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-      navLinks.forEach((link) => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${sectionId}`) {
-          link.classList.add('active');
-        }
-      });
-    }
+const setAgent = (id, status) => {
+  netParts(id).forEach((node) => {
+    node.classList.remove('is-working', 'is-done', 'is-empty', 'is-error');
+    if (status !== 'idle') node.classList.add(`is-${status}`);
   });
 };
 
-window.addEventListener('scroll', highlightNav, { passive: true });
-highlightNav();
+const setBusy = (on) => {
+  busy = on;
+  askSubmit.disabled = on;
+  askInput.readOnly = on;
+  suggestionBtns.forEach((btn) => { btn.disabled = on; });
+  agentNet?.classList.toggle('is-busy', on);
+  hubStatus.textContent = on ? 'Five agents searching' : 'Five agents ready';
+};
 
-// ================================================================
-// TYPEWRITER EFFECT
-// ================================================================
+// Stream the live answer. Resolves to the mode ('live' | 'mock') or null when the browser should fall back.
+async function askLive(question, onAgent, onDelta) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 60000);
+  try {
+    const res = await fetch('/api/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ question }),
+      signal: controller.signal,
+    });
+    if (!res.ok || !res.body || !(res.headers.get('content-type') || '').includes('ndjson')) return null;
 
-const heroTyped = document.querySelector('.typed');
-if (heroTyped) {
-  const text = heroTyped.dataset.typed || '';
-  const caret = document.createElement('span');
-  caret.className = 'typed-caret';
-  caret.setAttribute('aria-hidden', 'true');
-  const textNode = document.createTextNode('');
-  heroTyped.textContent = '';
-  heroTyped.append(textNode, caret);
-  let index = 0;
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+    let mode = null;
+    let gotText = false;
+    for (;;) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      let nl;
+      while ((nl = buffer.indexOf('\n')) >= 0) {
+        const raw = buffer.slice(0, nl).trim();
+        buffer = buffer.slice(nl + 1);
+        if (!raw) continue;
+        const event = JSON.parse(raw);
+        if (event.type === 'agent') onAgent(event);
+        else if (event.type === 'delta') { gotText = true; onDelta(event.text); }
+        else if (event.type === 'done') mode = event.mode;
+        else if (event.type === 'error' && !gotText) return null;
+      }
+    }
+    return gotText ? mode || 'live' : null;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
-  const typeNext = () => {
-    if (index <= text.length) {
-      textNode.textContent = text.slice(0, index);
-      index += 1;
-      setTimeout(typeNext, index < text.length ? 50 : 1000);
-    } else {
-      heroTyped.classList.add('typed-complete');
-      // Keep caret blinking
+// Offline: same agents, answered from the site's own data.
+async function askOffline(question, onAgent, onDelta) {
+  const { agents, text } = answerLocally(question);
+  agents.filter((a) => a.used).forEach((a) => onAgent({ id: a.id, status: 'working' }));
+  for (const a of agents) {
+    await wait(a.used ? 380 : 120);
+    onAgent({ id: a.id, status: a.used ? 'done' : 'empty', note: a.note });
+  }
+  for (const chunk of text.match(/[\s\S]{1,18}/g) || []) {
+    await wait(16);
+    onDelta(chunk);
+  }
+  return 'offline';
+}
+
+async function ask(rawQuestion) {
+  const question = rawQuestion.replace(/\s+/g, ' ').trim().slice(0, 300);
+  if (!question || busy) return;
+  setBusy(true);
+  AGENTS.forEach((a) => setAgent(a.id, 'idle'));
+
+  askPanel.classList.add('has-answer');
+  conversation.textContent = '';
+  const qBubble = document.createElement('div');
+  qBubble.className = 'q-bubble';
+  qBubble.textContent = question;
+  const aBubble = document.createElement('div');
+  aBubble.className = 'a-bubble';
+  aBubble.innerHTML = '<span class="a-thinking">Five agents are searching her record</span>';
+  conversation.append(qBubble, aBubble);
+
+  let text = '';
+  let frame = 0;
+  const used = new Set();
+  const onAgent = (e) => {
+    setAgent(e.id, e.status, e.note);
+    if (e.status === 'done') used.add(e.id);
+  };
+  const onDelta = (delta) => {
+    if (!text) aBubble.classList.add('is-streaming');
+    text += delta;
+    if (!frame) {
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        aBubble.innerHTML = renderAnswer(text);
+      });
     }
   };
 
-  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    setTimeout(typeNext, 800); // Delay start for effect
+  let mode = await askLive(question, onAgent, onDelta);
+  if (!mode) {
+    text = '';
+    used.clear();
+    AGENTS.forEach((a) => setAgent(a.id, 'idle'));
+    mode = await askOffline(question, onAgent, onDelta);
+  }
+
+  cancelAnimationFrame(frame);
+  frame = 0;
+  aBubble.classList.remove('is-streaming');
+  aBubble.innerHTML = renderAnswer(text);
+
+  const more = moreLinks(question, used);
+  if (more) conversation.append(more);
+
+  const meta = document.createElement('div');
+  meta.className = 'a-meta';
+  const names = [...used].map((id) => AGENT_NAMES[id]).join(', ');
+  const how = { live: 'answered live by Claude agents', mock: 'mock mode', offline: 'answered from site data' }[mode] || mode;
+  meta.textContent = `${names ? `Sources: ${names} · ` : ''}${how}`;
+  conversation.append(meta);
+
+  setBusy(false);
+}
+
+// "More on the page": the item the question named (its pop-up or project card), then the sections behind the answer.
+function moreLinks(question, used) {
+  const links = [];
+  const named = findNamed(question);
+  if (named?.type === 'journey' && document.querySelector(`.jrow[data-exp="${named.id}"]`)) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.textContent = 'Open full details';
+    btn.addEventListener('click', () => document.querySelector(`.jrow[data-exp="${named.id}"]`).click());
+    links.push(btn);
+  } else if (named?.type === 'project') {
+    const slide = [...document.querySelectorAll('.slide[id]')].find((el) => el.querySelector('h3')?.textContent === named.name);
+    if (slide) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.innerHTML = `${escapeHtml(named.name)} <span aria-hidden="true">↓</span>`;
+      btn.addEventListener('click', () => goToProject(slide.id));
+      links.push(btn);
+    }
+  }
+  const seen = new Set();
+  [...used].forEach((id) => {
+    const [href, label] = SECTION_FOR[id] || [];
+    if (href && !seen.has(href)) {
+      seen.add(href);
+      links.push([href, label]);
+    }
+  });
+  if (!links.length) return null;
+
+  const row = document.createElement('nav');
+  row.className = 'a-more';
+  row.setAttribute('aria-label', 'More on this page');
+  const label = document.createElement('span');
+  label.className = 'mono';
+  label.textContent = 'MORE ON THE PAGE';
+  row.append(label);
+  links.forEach((link) => {
+    if (link instanceof HTMLElement) {
+      row.append(link);
+      return;
+    }
+    const a = document.createElement('a');
+    a.href = link[0];
+    a.innerHTML = `${escapeHtml(link[1])} <span aria-hidden="true">↓</span>`;
+    row.append(a);
+  });
+  return row;
+}
+
+askForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  ask(askInput.value);
+});
+
+suggestionBtns.forEach((btn) => btn.addEventListener('click', () => {
+  askInput.value = btn.textContent;
+  ask(btn.textContent);
+}));
+
+// ================================================================
+// PROJECTS CAROUSEL: arrows, project pills, keyboard and swipe
+// Each slide's visualization plays when the slide comes into view.
+// ================================================================
+
+const track = document.getElementById('car-track');
+const slides = [...document.querySelectorAll('.slide')];
+const pills = [...document.querySelectorAll('.car-pill')];
+const prevBtn = document.getElementById('car-prev');
+const nextBtn = document.getElementById('car-next');
+const indexEl = document.getElementById('car-index');
+let activeSlide = -1;
+let carouselSeen = false;
+
+// ---- Project Uzima: six hospitals called at once (an illustrative case)
+const hospEls = [...document.querySelectorAll('.hosp')];
+const lineEls = [...document.querySelectorAll('.fan-line')];
+const voiceCap = document.getElementById('voice-cap');
+const VOICE = {
+  results: [['yes', 40], ['no', 'no beds'], ['no', 'no neuro ICU'], ['yes', 55], ['no', 'full'], ['no', 'no beds']],
+  order: [1, 0, 4, 2, 5, 3],
+  best: 0,
+};
+let voiceTimers = [];
+
+const stopVoice = () => {
+  voiceTimers.forEach(clearTimeout);
+  voiceTimers = [];
+};
+const later = (ms, fn) => voiceTimers.push(setTimeout(fn, reduceMotion ? 0 : ms));
+
+const setHosp = (i, state, label) => {
+  hospEls[i].classList.remove('is-calling', 'is-yes', 'is-no', 'is-best');
+  lineEls[i].classList.remove('is-calling', 'is-yes', 'is-best');
+  hospEls[i].classList.add(`is-${state}`);
+  if (state !== 'no') lineEls[i].classList.add(`is-${state}`);
+  hospEls[i].querySelector('em').textContent = label;
+};
+
+function runVoice() {
+  if (!hospEls.length) return;
+  stopVoice();
+  voiceCap.textContent = `Calling ${hospEls.length} hospitals at once · illustrative`;
+  hospEls.forEach((_, i) => setHosp(i, 'calling', 'calling'));
+  VOICE.order.forEach((i, k) => later(1000 + k * 450, () => {
+    const [state, info] = VOICE.results[i];
+    setHosp(i, state, state === 'yes' ? `yes · ${info} min` : info);
+  }));
+  later(1000 + VOICE.order.length * 450 + 400, () => {
+    hospEls[VOICE.best].classList.add('is-best');
+    lineEls[VOICE.best].classList.add('is-best');
+    voiceCap.textContent = 'Fastest yes: Mercy General, 40 min · illustrative';
+  });
+}
+
+document.getElementById('voice-replay')?.addEventListener('click', runVoice);
+
+// ---- Live view / screenshot toggle on each slide
+document.querySelectorAll('.view-toggle').forEach((group) => {
+  const viz = group.closest('.slide-viz');
+  group.querySelectorAll('button').forEach((btn) => btn.addEventListener('click', () => {
+    viz.dataset.view = btn.dataset.view;
+    group.querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+  }));
+});
+
+// ---- Which slide is showing
+const setActive = (i) => {
+  if (i === activeSlide) return;
+  activeSlide = i;
+  pills.forEach((p, k) => (k === i ? p.setAttribute('aria-current', 'true') : p.removeAttribute('aria-current')));
+  // Keep the active name visible in the pill row (horizontal only, so the page never jumps)
+  const pillRow = pills[i]?.parentElement;
+  if (pillRow && pillRow.scrollWidth > pillRow.clientWidth) {
+    const left = pills[i].offsetLeft - (pillRow.clientWidth - pills[i].offsetWidth) / 2;
+    pillRow.scrollTo({ left, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+  indexEl.textContent = String(i + 1).padStart(2, '0');
+  prevBtn.disabled = i === 0;
+  nextBtn.disabled = i === slides.length - 1;
+  if (carouselSeen) playSlide(i);
+};
+
+// Restart a slide's CSS animations, and the voice sequence on the Uzima slide
+function playSlide(i) {
+  slides.forEach((slide, k) => {
+    if (k !== i) slide.classList.remove('is-live');
+  });
+  const slide = slides[i];
+  slide.classList.remove('is-live');
+  void slide.offsetWidth;
+  slide.classList.add('is-live');
+  if (slide.dataset.key === 'uzima') runVoice();
+  else stopVoice();
+}
+
+const goTo = (i) => {
+  const k = Math.max(0, Math.min(slides.length - 1, i));
+  track.scrollTo({ left: slides[k].offsetLeft, behavior: reduceMotion ? 'auto' : 'smooth' });
+};
+
+function goToProject(id) {
+  const k = slides.findIndex((s) => s.id === id);
+  if (k < 0) return;
+  const section = document.getElementById('projects');
+  if (lenis) lenis.scrollTo(section, { duration: 1.2, easing: easeOutQuart });
+  else section.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+  goTo(k);
+}
+
+if (track) {
+  prevBtn.addEventListener('click', () => goTo(activeSlide - 1));
+  nextBtn.addEventListener('click', () => goTo(activeSlide + 1));
+  pills.forEach((p) => p.addEventListener('click', () => goTo(Number(p.dataset.to))));
+  track.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') { e.preventDefault(); goTo(activeSlide + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(activeSlide - 1); }
+  });
+
+  if (canObserve) {
+    const slideWatcher = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(slides.indexOf(entry.target));
+      });
+    }, { root: track, threshold: 0.6 });
+    slides.forEach((slide) => slideWatcher.observe(slide));
+
+    // Start the first visualization only once the carousel is on screen
+    new IntersectionObserver((entries, obs) => {
+      if (!entries[0].isIntersecting) return;
+      carouselSeen = true;
+      playSlide(Math.max(activeSlide, 0));
+      obs.disconnect();
+    }, { threshold: 0.35 }).observe(track);
   } else {
-    textNode.textContent = text;
-    caret.remove();
+    carouselSeen = true;
+    setActive(0);
   }
+  if (activeSlide < 0) setActive(0);
 }
 
 // ================================================================
-// SCROLL REVEAL ANIMATIONS
+// JOURNEY: each row opens a details pop-up
 // ================================================================
 
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -80px 0px'
+const dialog = document.getElementById('exp-dialog');
+const KIND_LABEL = { rec: 'RECOGNITION', founder: 'FOUNDER', exp: 'EXPERIENCE', edu: 'EDUCATION' };
+const indexById = new Map(JOURNEY.map((item, i) => [item.id, i]));
+const el = (id) => document.getElementById(id);
+let currentIndex = 0;
+let opener = null;
+
+const listItems = (target, values) => {
+  target.textContent = '';
+  values.forEach((value) => {
+    const li = document.createElement('li');
+    li.textContent = value;
+    target.append(li);
+  });
 };
 
-if ('IntersectionObserver' in window) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('[data-animate]').forEach((el) => {
-    observer.observe(el);
+const fillDialog = (i) => {
+  const item = JOURNEY[i];
+  currentIndex = i;
+  const kind = el('exp-kind');
+  kind.textContent = KIND_LABEL[item.kind];
+  kind.dataset.kind = item.kind;
+  el('exp-title').textContent = item.title;
+  el('exp-meta').textContent = [item.org, item.location, item.start ? item.when : null].filter(Boolean).join(' · ');
+  el('exp-summary').textContent = item.summary;
+  listItems(el('exp-bullets'), item.bullets);
+  listItems(el('exp-tags'), item.tags);
+  const links = el('exp-links');
+  links.textContent = '';
+  item.links.forEach((link) => {
+    const a = document.createElement('a');
+    a.className = 'btn btn-light btn-sm';
+    a.href = link.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = link.label;
+    links.append(a);
   });
+  el('exp-prev').disabled = i === 0;
+  el('exp-next').disabled = i === JOURNEY.length - 1;
+  el('exp-count').textContent = `${i + 1} / ${JOURNEY.length}`;
+};
+
+document.querySelectorAll('.jrow').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const i = indexById.get(btn.dataset.exp);
+    if (i === undefined) return;
+    opener = btn;
+    fillDialog(i);
+    dialog.showModal();
+    lenis?.stop();
+  });
+});
+
+el('exp-prev').addEventListener('click', () => fillDialog(Math.max(0, currentIndex - 1)));
+el('exp-next').addEventListener('click', () => fillDialog(Math.min(JOURNEY.length - 1, currentIndex + 1)));
+dialog.querySelector('[data-close]').addEventListener('click', () => dialog.close());
+dialog.addEventListener('click', (e) => {
+  if (e.target === dialog) dialog.close(); // click on the backdrop
+});
+dialog.addEventListener('close', () => {
+  lenis?.start();
+  opener?.focus();
+});
+
+// ================================================================
+// GRADIENT FIELDS: soft behind "a good deed", pixel boxes behind the contact panel.
+// Same five colour blobs in both; they drift toward the mouse, the nearer ones more.
+// ================================================================
+
+const FIELD_BLOBS = [
+  { x: 0.24, y: 0.42, r: 0.36, c: [140, 160, 250], depth: 1.0, ph: 0 },
+  { x: 0.74, y: 0.38, r: 0.32, c: [248, 158, 98], depth: 1.7, ph: 2 },
+  { x: 0.52, y: 0.78, r: 0.34, c: [176, 150, 240], depth: 0.6, ph: 4 },
+  { x: 0.9, y: 0.82, r: 0.2, c: [120, 140, 245], depth: 1.3, ph: 1 },
+  { x: 0.1, y: 0.86, r: 0.18, c: [250, 180, 130], depth: 0.9, ph: 3 },
+];
+// strength 0.5 keeps the colours soft enough that the text on top stays easy to read
+const FIELD_LOOK = { base: () => [250, 250, 248], blobs: FIELD_BLOBS, strength: 0.5, falloff: 2.4, drift: 0.025, range: 0.14 };
+
+const statementEl = document.querySelector('.statement');
+if (statementEl) gradientField(statementEl, { ...FIELD_LOOK, style: 'soft', cell: 8 });
+
+const ctaEl = document.querySelector('.cta');
+// a negative range makes the pixel colours move away from the cursor instead of toward it
+if (ctaEl) gradientField(ctaEl, { ...FIELD_LOOK, style: 'pixel', cell: 14, gap: 1, dither: true, range: -0.14 });
+
+// ================================================================
+// FOOTER WORDMARK: the photos inside the letters drift while it's on screen
+// ================================================================
+
+const wordmark = document.getElementById('wordmark');
+const WORDMARK_PHOTOS = 'images/wordmark-color.jpg';
+const PAN_SPEED = 55; // pixels per second
+
+// The photo strip repeats seamlessly: loop exactly one strip width at a steady speed
+const sizeStrip = (img) => {
+  const h = wordmark.querySelector('.wm-layer').getBoundingClientRect().height;
+  if (!h || !img.naturalHeight) return;
+  const w = (img.naturalWidth * h) / img.naturalHeight;
+  wordmark.style.setProperty('--strip-w', `${w.toFixed(1)}px`);
+  wordmark.style.setProperty('--pan-dur', `${(w / PAN_SPEED).toFixed(1)}s`);
+};
+
+if (wordmark && canObserve && !reduceMotion) {
+  const strip = new Image();
+  strip.onload = () => sizeStrip(strip);
+  new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !strip.src) strip.src = WORDMARK_PHOTOS;
+    if (entry.isIntersecting) wordmark.classList.add('is-in');
+    wordmark.classList.toggle('is-panning', entry.isIntersecting);
+  }).observe(wordmark);
+  window.addEventListener('resize', () => sizeStrip(strip), { passive: true });
 } else {
-  // Fallback: show all elements
-  document.querySelectorAll('[data-animate]').forEach((el) => {
-    el.classList.add('is-visible');
-  });
+  wordmark?.classList.add('is-in');
 }
 
 // ================================================================
-// MAGNETIC BUTTON EFFECT
+// CURSOR RING: a soft circle that trails the pointer (mouse/trackpad only)
 // ================================================================
 
-document.querySelectorAll('[data-magnetic]').forEach((btn) => {
-  btn.addEventListener('mousemove', (e) => {
-    const rect = btn.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches && !reduceMotion) {
+  const ring = document.createElement('div');
+  ring.className = 'cursor-ring';
+  ring.setAttribute('aria-hidden', 'true');
+  document.body.append(ring);
 
-    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-  });
+  let targetX = 0;
+  let targetY = 0;
+  let x = 0;
+  let y = 0;
+  let seen = false;
+  let running = false;
 
-  btn.addEventListener('mouseleave', () => {
-    btn.style.transform = '';
-  });
-});
-
-// ================================================================
-// CONTACT FORM
-// ================================================================
-
-const form = document.querySelector('[data-form]');
-const feedback = form?.querySelector('.form-feedback');
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mzzjolzp';
-
-const showToast = (message, type = 'info') => {
-  const toast = document.createElement('div');
-  toast.className = `toast toast-${type}`;
-  toast.textContent = message;
-  toast.setAttribute('role', 'status');
-  toast.setAttribute('aria-live', 'polite');
-  document.body.appendChild(toast);
-  requestAnimationFrame(() => toast.classList.add('is-visible'));
-  setTimeout(() => {
-    toast.classList.remove('is-visible');
-    setTimeout(() => toast.remove(), 300);
-  }, 4000);
-};
-
-form?.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const submitButton = form.querySelector('button[type="submit"]');
-  const originalText = submitButton.innerHTML;
-  submitButton.disabled = true;
-  submitButton.innerHTML = '<span style="display: inline-block; animation: spin 1s linear infinite;">⟳</span> Sending...';
-
-  const formData = new FormData(form);
-
-  try {
-    const response = await fetch(FORMSPREE_ENDPOINT, {
-      method: 'POST',
-      headers: { Accept: 'application/json' },
-      body: formData
-    });
-
-    if (response.ok) {
-      form.reset();
-      if (feedback) {
-        feedback.textContent = 'Message sent successfully! I will get back to you soon.';
-        feedback.style.color = '#22c55e';
-      }
-      showToast('Message sent successfully!', 'success');
+  const follow = () => {
+    x += (targetX - x) * 0.16;
+    y += (targetY - y) * 0.16;
+    ring.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    if (Math.abs(targetX - x) > 0.2 || Math.abs(targetY - y) > 0.2) {
+      requestAnimationFrame(follow);
     } else {
-      throw new Error('Form submission failed');
+      running = false;
     }
-  } catch (error) {
-    console.error(error);
-    if (feedback) {
-      feedback.textContent = 'There was an issue sending your message. Please email sukritisehgal2800@gmail.com.';
-      feedback.style.color = '#ef4444';
+  };
+
+  window.addEventListener('pointermove', (e) => {
+    if (e.pointerType !== 'mouse') return;
+    targetX = e.clientX;
+    targetY = e.clientY;
+    if (!seen) {
+      x = targetX;
+      y = targetY;
+      seen = true;
     }
-    showToast('Unable to send message. Please email directly.', 'error');
-  } finally {
-    submitButton.disabled = false;
-    submitButton.innerHTML = originalText;
-  }
-});
+    ring.classList.add('is-visible');
+    if (!running) {
+      running = true;
+      requestAnimationFrame(follow);
+    }
+  }, { passive: true });
+
+  document.addEventListener('pointerover', (e) => {
+    const target = e.target instanceof Element ? e.target : null;
+    ring.classList.toggle('is-hover', Boolean(target?.closest('a, button, input, textarea, select, label')));
+  });
+  document.documentElement.addEventListener('pointerleave', () => ring.classList.remove('is-visible'));
+  window.addEventListener('pointerdown', () => ring.classList.add('is-down'));
+  window.addEventListener('pointerup', () => ring.classList.remove('is-down'));
+}
 
 // ================================================================
 // FOOTER YEAR
 // ================================================================
 
-const yearEl = document.getElementById('current-year');
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
-
-// ================================================================
-// 3D TILT EFFECT FOR PROJECT CARDS
-// ================================================================
-
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  document.querySelectorAll('.project-card').forEach((card) => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = (y - centerY) / 20;
-      const rotateY = (centerX - x) / 20;
-
-      card.style.transform = `
-        perspective(1000px) 
-        rotateX(${rotateX}deg) 
-        rotateY(${rotateY}deg) 
-        translateY(-10px) 
-        scale(1.02)
-      `;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-}
-
-// ================================================================
-// PARALLAX EFFECT FOR HERO ORBS
-// ================================================================
-
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const orbs = document.querySelectorAll('.hero-orb');
-
-  window.addEventListener('mousemove', (e) => {
-    const x = (e.clientX - window.innerWidth / 2) / 50;
-    const y = (e.clientY - window.innerHeight / 2) / 50;
-
-    orbs.forEach((orb, index) => {
-      const factor = (index + 1) * 0.5;
-      orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-    });
-  });
-}
-
-// ================================================================
-// KEYBOARD NAVIGATION ENHANCEMENTS
-// ================================================================
-
-document.addEventListener('keydown', (e) => {
-  // Skip to main content on Tab
-  if (e.key === 'Tab' && !e.shiftKey && document.activeElement === document.body) {
-    const skipLink = document.querySelector('[href="#main"]');
-    if (skipLink) {
-      skipLink.focus();
-    }
-  }
-
-  // Close mobile menu on Escape
-  if (e.key === 'Escape' && siteNav?.classList.contains('open')) {
-    siteNav.classList.remove('open');
-    mobileMenuBtn?.classList.remove('active');
-    mobileMenuBtn?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-  }
-});
-
-// ================================================================
-// PERFORMANCE: PAUSE ANIMATIONS WHEN PAGE NOT VISIBLE
-// ================================================================
-
-document.addEventListener('visibilitychange', () => {
-  if (document.hidden) {
-    document.body.classList.add('page-hidden');
-  } else {
-    document.body.classList.remove('page-hidden');
-  }
-});
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();

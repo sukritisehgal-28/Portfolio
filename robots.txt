@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sukritisehgal-28.github.io/sitemap.xml
+Sitemap: https://sukriti-sehgal-portfolio.vercel.app/sitemap.xml

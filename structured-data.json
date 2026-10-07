@@ -2,17 +2,13 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Sukriti Sehgal",
-  "jobTitle": "Data Scientist • AI Engineer",
+  "jobTitle": "AI/ML Engineer",
   "email": "mailto:sukritisehgal2800@gmail.com",
-  "telephone": "+1-720-939-7944",
-  "url": "https://sukritisehgal-28.github.io/",
-  "homeLocation": {
-    "@type": "Place",
-    "name": "Boulder, CO"
-  },
+  "url": "https://sukriti-sehgal-portfolio.vercel.app/",
   "sameAs": [
     "https://github.com/sukritisehgal-28",
-    "https://www.linkedin.com/in/sukriti-sehgal28/"
+    "https://www.linkedin.com/in/sukriti-sehgal28/",
+    "https://www.youtube.com/@SukritiSehgal-2800"
   ],
   "alumniOf": [
     {
@@ -25,5 +21,11 @@
       "name": "Maharaja Surajmal Institute of Technology",
       "degree": "B.Tech, ECE"
     }
-  ]
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Oriva Health",
+    "url": "https://www.oriva.health/"
+  },
+  "image": "https://sukriti-sehgal-portfolio.vercel.app/images/sukriti-portrait.jpg"
 }

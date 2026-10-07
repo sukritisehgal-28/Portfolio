@@ -1,0 +1,11 @@
+<svg viewBox="0 0 1200 460" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs>
+ <linearGradient id="cta-g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#181A29"/><stop offset=".55" stop-color="#3D4785"/><stop offset="1" stop-color="#97A6F0"/></linearGradient>
+ <filter id="cta-grain"><feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .6 -.2"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+ <filter id="cta-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="10" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1200" height="460" fill="url(#cta-g)"/>
+<rect width="1200" height="460" fill="#fff" filter="url(#cta-grain)" opacity=".16"/>
+<g fill="none" stroke="#fff" stroke-opacity=".16"><circle cx="750.0" cy="520.0" r="150"/><circle cx="706.1" cy="626.1" r="150"/><circle cx="600.0" cy="670.0" r="150"/><circle cx="493.9" cy="626.1" r="150"/><circle cx="450.0" cy="520.0" r="150"/><circle cx="493.9" cy="413.9" r="150"/><circle cx="600.0" cy="370.0" r="150"/><circle cx="706.1" cy="413.9" r="150"/><circle cx="600.0" cy="520" r="300"/><circle cx="600.0" cy="520" r="150"/></g>
+<g filter="url(#cta-glow)"><path d="M600.0,260.40000000000003 C605.0,285.40000000000003 609.0,289.40000000000003 634.0,294.40000000000003 C609.0,299.40000000000003 605.0,303.40000000000003 600.0,328.40000000000003 C595.0,303.40000000000003 591.0,299.40000000000003 566.0,294.40000000000003 C591.0,289.40000000000003 595.0,285.40000000000003 600.0,260.40000000000003 Z" fill="#fff"/></g>
+</svg>

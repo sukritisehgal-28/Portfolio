@@ -1,0 +1,15 @@
+{
+  "name": "sukriti-sehgal-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env scripts/dev-server.mjs",
+    "dev:mock": "AGENTS_MOCK=1 PORT=8001 node scripts/dev-server.mjs"
+  },
+  "engines": {
+    "node": ">=22.9"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0"
+  }
+}
