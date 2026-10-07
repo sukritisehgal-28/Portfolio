@@ -1,688 +1,399 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sukriti Sehgal | Data Scientist • AI Engineer</title>
+  <title>Sukriti Sehgal | AI/ML Engineer</title>
+  <script>
+    // Enable entrance animations; fall back to fully visible content if app.js does not run.
+    document.documentElement.classList.add('js');
+    setTimeout(function () { if (!window.__appReady) document.documentElement.classList.remove('js'); }, 2500);
+  </script>
   <meta name="description"
-    content="Portfolio of Sukriti Sehgal, Data Scientist and AI Engineer crafting data-driven products, intelligent automation, and high-impact analytics." />
-  <meta name="theme-color" content="#030014" />
-  <meta name="color-scheme" content="dark light" />
-  <link rel="canonical" href="https://sukritisehgal-28.github.io/" />
+    content="Sukriti Sehgal is an AI/ML engineer and co-founder of Oriva Health who builds agentic systems, voice agents, clinical AI and computer vision, from prototype to tested product." />
+  <meta name="theme-color" content="#FAFAF8" />
+  <meta name="color-scheme" content="light" />
+  <link rel="canonical" href="https://sukriti-sehgal-portfolio.vercel.app/" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..700&family=IBM+Plex+Mono:wght@400;500&family=Tiro+Devanagari+Hindi&display=swap" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sukriti Sehgal | Data Scientist • AI Engineer" />
+  <meta property="og:title" content="Sukriti Sehgal | AI/ML Engineer" />
   <meta property="og:description"
-    content="Data Scientist and AI Engineer based in Boulder, CO focused on predictive analytics, intelligent automation, and immersive data storytelling." />
-  <meta property="og:url" content="https://sukritisehgal-28.github.io/" />
-  <meta property="og:image" content="assets/hero-bg.svg" />
+    content="AI/ML engineer and co-founder of Oriva Health. Agentic systems, voice agents, clinical AI and computer vision." />
+  <meta property="og:url" content="https://sukriti-sehgal-portfolio.vercel.app/" />
+  <meta property="og:image" content="https://sukriti-sehgal-portfolio.vercel.app/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Sukriti Sehgal, AI/ML Engineer" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sukriti Sehgal | Data Scientist • AI Engineer" />
-  <meta name="twitter:description" content="Data Scientist and AI Engineer based in Boulder, CO." />
-  <meta name="twitter:image" content="assets/hero-bg.svg" />
-  <script type="application/ld+json" id="person-schema">
+  <meta name="twitter:title" content="Sukriti Sehgal | AI/ML Engineer" />
+  <meta name="twitter:description" content="AI/ML engineer and co-founder of Oriva Health." />
+  <meta name="twitter:image" content="https://sukriti-sehgal-portfolio.vercel.app/assets/og-image.png" />
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Sukriti Sehgal",
-    "jobTitle": "Data Scientist • AI Engineer",
+    "jobTitle": "AI/ML Engineer",
+    "worksFor": { "@type": "Organization", "name": "Oriva Health", "url": "https://www.oriva.health/" },
     "email": "mailto:sukritisehgal2800@gmail.com",
-    "telephone": "+1-720-939-7944",
-    "url": "https://sukritisehgal-28.github.io/",
-    "homeLocation": {
-      "@type": "Place",
-      "name": "Boulder, CO"
-    },
+    "url": "https://sukriti-sehgal-portfolio.vercel.app/",
+    "image": "https://sukriti-sehgal-portfolio.vercel.app/images/sukriti-portrait.jpg",
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "University of Colorado Boulder" },
+      { "@type": "CollegeOrUniversity", "name": "Maharaja Surajmal Institute of Technology" }
+    ],
     "sameAs": [
       "https://github.com/sukritisehgal-28",
-      "https://www.linkedin.com/in/sukriti-sehgal28/"
-    ],
-    "alumniOf": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "University of Colorado Boulder",
-        "degree": "MS, Data Science"
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "Maharaja Surajmal Institute of Technology",
-        "degree": "B.Tech, ECE"
-      }
+      "https://www.linkedin.com/in/sukriti-sehgal28/",
+      "https://www.youtube.com/@SukritiSehgal-2800"
     ]
   }
   </script>
-  <link rel="alternate" type="application/json" href="structured-data.json" />
 </head>
 
 <body>
-  <!-- Loading Screen -->
-  <div class="loader" id="loader">
-    <div class="loader-content">
-      <div class="loader-spinner"></div>
-    </div>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Particle Canvas -->
-  <canvas id="particle-canvas"></canvas>
-
-  <!-- Custom Cursor -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-dot" id="cursor-dot"></div>
-
-  <!-- Header -->
   <header class="site-header" id="top">
-    <div class="header-inner">
-      <a href="#hero" class="brand" aria-label="Back to top">Sukriti Sehgal</a>
+    <div class="wrap header-inner">
+      <a href="#top" class="brand">Sukriti Sehgal</a>
       <nav class="site-nav" id="site-nav" aria-label="Primary">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <a href="#agents">Ask my agents</a>
+        <a href="#journey">Journey</a>
+        <a href="#projects">Projects</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-resume" href="assets/Sukriti_Resume.pdf" download>Download résumé</a>
       </nav>
-      <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle>
-        <span class="theme-icon" aria-hidden="true"></span>
-        <span class="theme-label">Light</span>
+      <a class="btn btn-dark btn-sm header-resume" href="assets/Sukriti_Resume.pdf" download>Résumé</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false"
+        aria-controls="site-nav">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16" /></svg>
       </button>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-      <!-- Ambient Glow Orbs -->
-      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+    <!-- Hero: the developer ornament on a saffron and periwinkle glow -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="wrap hero-inner">
+        <div class="hero-orn reveal" style="--d: 0ms"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sukriti, an engineer at her laptop"><defs><linearGradient id="f-dev-l" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".25" stop-color="#fff"/><stop offset=".75" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="f-dev-hair"><rect width="280" height="64" fill="#fff"/><circle cx="140" cy="15.24" r="9.15" fill="#000"/></mask><mask id="f-dev-face"><rect width="280" height="64" fill="#fff"/><ellipse cx="137.04" cy="15.08" rx="1.08" ry="1.08" fill="#000"><animate attributeName="ry" values="1.08;1.08;0.13;1.08;1.08" keyTimes="0;0.86;0.88;0.9;1" dur="6s" begin="0s" repeatCount="indefinite"/></ellipse><ellipse cx="142.96" cy="15.08" rx="1.08" ry="1.08" fill="#000"><animate attributeName="ry" values="1.08;1.08;0.13;0.13;1.08;1.08;0.13;1.08;1.08" keyTimes="0;0.55;0.575;0.6;0.62;0.86;0.88;0.9;1" dur="6s" begin="0s" repeatCount="indefinite"/></ellipse><path d="M137.12,17.96 Q140.00,21.80 142.88,17.96" fill="none" stroke="#000" stroke-width="1.04" stroke-linecap="round"><animate attributeName="d" values="M137.12,17.96 Q140.00,21.80 142.88,17.96;M137.12,17.96 Q140.00,21.80 142.88,17.96;M136.40,17.48 Q140.00,23.48 143.60,17.48;M136.40,17.48 Q140.00,23.48 143.60,17.48;M137.12,17.96 Q140.00,21.80 142.88,17.96;M137.12,17.96 Q140.00,21.80 142.88,17.96" keyTimes="0;0.5;0.56;0.66;0.72;1" dur="6s" begin="0s" repeatCount="indefinite"/></path></mask><mask id="f-dev-mb"><rect width="280" height="64" fill="#fff"/><path d="M130.40,27.60 C128.90,25.10 129.80,17.10 129.80,14.60 A10.20,10.20 0 0 1 150.20,14.60 C150.20,17.10 151.10,25.10 149.60,27.60 Q148.00,29.40 146.60,26.80 Q144.40,22.20 140.00,22.20 Q135.60,22.20 133.40,26.80 Q132.00,29.40 130.40,27.60 Z" fill="#000" stroke="#000" stroke-width="2.3"/><circle cx="140" cy="15.24" r="9.15" fill="#000"/><rect x="123" y="30" width="34" height="21" rx="4" fill="#000"/></mask><mask id="f-dev-ml"><rect width="280" height="64" fill="#fff"/><path d="M140,35.5 C140.8,39.7 140.8,39.7 145,40.5 C140.8,41.3 140.8,41.3 140,45.5 C139.2,41.3 139.2,41.3 135,40.5 C139.2,39.7 139.2,39.7 140,35.5 Z" fill="#000"/></mask></defs><g mask="url(#f-dev-mb)" fill="#fff"><path d="M125,44 C125,30 131,26 140,26 C149,26 155,30 155,44 Z"/><path d="M112,54 C112,47 121,45 140,45 C159,45 168,47 168,54 Z"/></g><g mask="url(#f-dev-hair)" fill="#fff"><path d="M130.40,27.60 C128.90,25.10 129.80,17.10 129.80,14.60 A10.20,10.20 0 0 1 150.20,14.60 C150.20,17.10 151.10,25.10 149.60,27.60 Q148.00,29.40 146.60,26.80 Q144.40,22.20 140.00,22.20 Q135.60,22.20 133.40,26.80 Q132.00,29.40 130.40,27.60 Z"/></g><circle cx="140" cy="15.24" r="8.0" fill="#fff" mask="url(#f-dev-face)"/><rect x="125" y="32" width="30" height="17" rx="2.6" fill="#fff" mask="url(#f-dev-ml)"/><rect x="10" y="54" width="260" height="1.6" rx=".8" fill="url(#f-dev-l)"/><circle cx="178" cy="49" r="2.2" fill="#fff" opacity="0.9"/><circle cx="189" cy="49" r="1.8" fill="#fff" opacity="0.7"/><circle cx="199" cy="49" r="1.4" fill="#fff" opacity="0.55"/><circle cx="208" cy="49" r="1.1" fill="#fff" opacity="0.4"/><circle cx="102" cy="49" r="2.2" fill="#fff" opacity="0.9"/><circle cx="91" cy="49" r="1.8" fill="#fff" opacity="0.7"/><circle cx="81" cy="49" r="1.4" fill="#fff" opacity="0.55"/><circle cx="72" cy="49" r="1.1" fill="#fff" opacity="0.4"/></svg></div>
+        <p class="eyebrow-lines reveal" style="--d: 80ms">AI/ML Engineer · Agentic, voice and clinical AI</p>
+        <h1 id="hero-title" class="reveal" style="--d: 140ms">Sukriti Sehgal</h1>
+        <p class="hero-lead reveal" style="--d: 220ms">Give me a real problem. I'll find the AI that solves it and take it
+          from first idea to a product people use.</p>
+        <div class="me-pill reveal" style="--d: 290ms">
+          <img src="images/sukriti-portrait.jpg" alt="Sukriti Sehgal" width="900" height="1000" fetchpriority="high" />
+          <span>Hi, I'm Sukriti · open to roles anywhere</span>
+        </div>
+        <div class="hero-ctas reveal" style="--d: 350ms">
+          <a class="btn btn-dark" href="#agents">Ask my agents</a>
+          <a class="btn btn-light" href="#projects">See my work</a>
+        </div>
+      </div>
+    </section>
 
-      <div class="hero-content" data-animate="fade-up">
-        <div class="hero-centered">
-          <div class="hero-status">
-            <span class="status-dot" aria-hidden="true"></span>
-            <span>Available for Opportunities</span>
-          </div>
+    <!-- Tools ticker -->
+    <section class="tools" aria-label="Tools I build with">
+      <p class="tools-label">TOOLS I BUILD WITH</p>
+      <div class="ticker">
+        <ul class="ticker-track"><li>Python</li><li>SQL</li><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>Hugging Face</li><li>LangChain</li><li>RAG</li><li>AI agents</li><li>Computer vision</li><li>NLP</li><li>FastAPI</li><li>PostgreSQL</li><li>MongoDB</li><li>Docker</li><li>AWS</li><li>GCP</li><li>Azure</li><li>Tableau</li><li>Power BI</li><li class="cert">Certified AI Engineer · USAII</li><li class="cert">Google Analytics certified</li></ul>
+        <ul class="ticker-track" aria-hidden="true"><li>Python</li><li>SQL</li><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>Hugging Face</li><li>LangChain</li><li>RAG</li><li>AI agents</li><li>Computer vision</li><li>NLP</li><li>FastAPI</li><li>PostgreSQL</li><li>MongoDB</li><li>Docker</li><li>AWS</li><li>GCP</li><li>Azure</li><li>Tableau</li><li>Power BI</li><li class="cert">Certified AI Engineer · USAII</li><li class="cert">Google Analytics certified</li></ul>
+      </div>
+    </section>
 
-          <p class="hero-intro">Boulder, CO</p>
+    <!-- Ask my agents -->
+    <section class="section" id="agents" aria-labelledby="agents-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="sec-orn"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sukriti conducting her five agents"><defs><linearGradient id="f-con-l" x1="0" x2="1"><stop offset="0" stop-color="#23238F" stop-opacity="0"/><stop offset=".25" stop-color="#23238F"/><stop offset=".75" stop-color="#23238F"/><stop offset="1" stop-color="#23238F" stop-opacity="0"/></linearGradient><mask id="f-con-hair"><rect width="280" height="64" fill="#fff"/><circle cx="140" cy="24.68" r="7.15" fill="#000"/></mask><mask id="f-con-face"><rect width="280" height="64" fill="#fff"/><ellipse cx="137.78" cy="24.56" rx="0.81" ry="0.81" fill="#000"><animate attributeName="ry" values="0.81;0.81;0.10;0.81;0.81" keyTimes="0;0.86;0.88;0.9;1" dur="6s" begin="0s" repeatCount="indefinite"/></ellipse><ellipse cx="142.22" cy="24.56" rx="0.81" ry="0.81" fill="#000"><animate attributeName="ry" values="0.81;0.81;0.10;0.10;0.81;0.81;0.10;0.81;0.81" keyTimes="0;0.55;0.575;0.6;0.62;0.86;0.88;0.9;1" dur="6s" begin="0s" repeatCount="indefinite"/></ellipse><path d="M137.84,26.72 Q140.00,29.60 142.16,26.72" fill="none" stroke="#000" stroke-width="0.80" stroke-linecap="round"><animate attributeName="d" values="M137.84,26.72 Q140.00,29.60 142.16,26.72;M137.84,26.72 Q140.00,29.60 142.16,26.72;M137.30,26.36 Q140.00,30.86 142.70,26.36;M137.30,26.36 Q140.00,30.86 142.70,26.36;M137.84,26.72 Q140.00,29.60 142.16,26.72;M137.84,26.72 Q140.00,29.60 142.16,26.72" keyTimes="0;0.5;0.56;0.66;0.72;1" dur="6s" begin="0s" repeatCount="indefinite"/></path></mask><mask id="f-con-mb"><rect width="280" height="64" fill="#fff"/><path d="M132.90,34.20 C131.40,31.70 132.30,26.70 132.30,24.20 A7.70,7.70 0 0 1 147.70,24.20 C147.70,26.70 148.60,31.70 147.10,34.20 Q145.50,36.00 144.10,33.40 Q143.30,29.90 140.00,29.90 Q136.70,29.90 135.90,33.40 Q134.50,36.00 132.90,34.20 Z" fill="#000" stroke="#000" stroke-width="2.3"/><circle cx="140" cy="24.68" r="7.15" fill="#000"/></mask></defs><path d="M110.9,26.7 A30,30 0 0 1 169.1,26.7" fill="none" stroke="#23238F" stroke-width="1.1" stroke-dasharray="1.5 3.5" stroke-linecap="round" opacity=".7"/><circle cx="110.9" cy="26.7" r="3" fill="#23238F"/><circle cx="123.7" cy="8.8" r="3" fill="#23238F"/><circle cx="140.0" cy="3.5" r="3.4" fill="#23238F"/><circle cx="156.3" cy="8.8" r="3" fill="#23238F"/><circle cx="169.1" cy="26.7" r="3" fill="#23238F"/><g mask="url(#f-con-mb)" fill="#23238F"><path d="M133.2,34 Q140,31.8 146.8,34 L149.8,48 Q140,50.2 130.2,48 Z"/><rect x="133.4" y="47" width="3.9" height="7" rx="1.95"/><rect x="142.7" y="47" width="3.9" height="7" rx="1.95"/><path d="M134.2,35 L125.5,23.5" stroke="#23238F" stroke-width="3.8" stroke-linecap="round"/><path d="M145.8,35 L154.5,23.5" stroke="#23238F" stroke-width="3.8" stroke-linecap="round"/></g><g mask="url(#f-con-hair)" fill="#23238F"><path d="M132.90,34.20 C131.40,31.70 132.30,26.70 132.30,24.20 A7.70,7.70 0 0 1 147.70,24.20 C147.70,26.70 148.60,31.70 147.10,34.20 Q145.50,36.00 144.10,33.40 Q143.30,29.90 140.00,29.90 Q136.70,29.90 135.90,33.40 Q134.50,36.00 132.90,34.20 Z"/></g><circle cx="140" cy="24.68" r="6.0" fill="#23238F" mask="url(#f-con-face)"/><rect x="10" y="54" width="260" height="1.6" rx=".8" fill="url(#f-con-l)"/><circle cx="182" cy="49" r="2.2" fill="#23238F" opacity="0.9"/><circle cx="193" cy="49" r="1.8" fill="#23238F" opacity="0.7"/><circle cx="203" cy="49" r="1.4" fill="#23238F" opacity="0.55"/><circle cx="212" cy="49" r="1.1" fill="#23238F" opacity="0.4"/><circle cx="98" cy="49" r="2.2" fill="#23238F" opacity="0.9"/><circle cx="87" cy="49" r="1.8" fill="#23238F" opacity="0.7"/><circle cx="77" cy="49" r="1.4" fill="#23238F" opacity="0.55"/><circle cx="68" cy="49" r="1.1" fill="#23238F" opacity="0.4"/></svg></div>
+          <p class="eyebrow-lines">Five agents · one orchestrator</p>
+          <h2 id="agents-title">Ask my agents</h2>
+          <p class="section-lead">Skip the scrolling. Ask a question and five agents search everything I've done, then
+            answer in seconds.</p>
+        </div>
 
-          <h1 class="hero-name">Sukriti Sehgal</h1>
-
-          <p class="hero-tagline">
-            <span class="typed" data-typed="AI/ML Engineer specializing in LLM-powered products, end-to-end ML pipelines & data analytics"></span>
-          </p>
-          <p class="hero-tagline" style="font-size: clamp(0.9rem, 2vw, 1.1rem); color: var(--text-muted); margin-top: 0.25rem;">
-            MSDS @ CU Boulder
-          </p>
-
-          <p class="hero-summary">I build intelligent data products that accelerate decisions, automate insight
-            generation, and create measurable value across marketing, product, and public-impact initiatives.</p>
-
-          <div class="hero-ctas">
-            <a class="btn primary" href="assets/SUKRITI_RESUME.pdf" download>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                <polyline points="7 10 12 15 17 10" />
-                <line x1="12" y1="15" x2="12" y2="3" />
-              </svg>
-              Download Resume
-            </a>
-            <a class="btn ghost" href="#contact">Let's Connect</a>
-          </div>
-
-          <div class="hero-social" aria-label="Social links">
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" aria-label="GitHub"
-              data-magnetic>
-              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-                <path
-                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/sukriti-sehgal28/" target="_blank" rel="noopener" aria-label="LinkedIn"
-              data-magnetic>
-              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
-                <path
-                  d="M20.45 20.45h-3.55v-5.4c0-1.29-.02-2.96-1.81-2.96-1.81 0-2.09 1.41-2.09 2.86v5.5H9.45V9h3.41v1.56h.05c.48-.9 1.66-1.85 3.42-1.85 3.66 0 4.34 2.41 4.34 5.54v6.2zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z" />
-              </svg>
-            </a>
-            <a href="mailto:sukritisehgal2800@gmail.com" target="_blank" rel="noopener" aria-label="Email"
-              data-magnetic>
-              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-              </svg>
-            </a>
+        <div class="show reveal">
+          <div class="show-in">
+            <div class="panel panel-ask" id="panel-ask">
+              <div class="col col-mid">
+                <svg class="net" id="agent-net" viewBox="0 0 320 236" aria-hidden="true"><defs><radialGradient id="net-orb" cx="36%" cy="30%" r="75%"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#C3CCFF"/><stop offset=".72" stop-color="#7286E6"/><stop offset="1" stop-color="#4B5FD0"/></radialGradient><radialGradient id="net-warm" cx="72%" cy="78%" r="55%"><stop offset="0" stop-color="#F59A54" stop-opacity=".85"/><stop offset="1" stop-color="#F59A54" stop-opacity="0"/></radialGradient></defs><line class="net-spoke" data-agent="experience" x1="160" y1="116" x2="160.0" y2="32.0"/><line class="net-spoke" data-agent="projects" x1="160" y1="116" x2="239.9" y2="90.0"/><line class="net-spoke" data-agent="recognition" x1="160" y1="116" x2="209.4" y2="184.0"/><line class="net-spoke" data-agent="education" x1="160" y1="116" x2="110.6" y2="184.0"/><line class="net-spoke" data-agent="careers" x1="160" y1="116" x2="80.1" y2="90.0"/><g class="net-center"><circle class="nc-ring" cx="160" cy="116" r="40"/><circle cx="160" cy="116" r="31" fill="url(#net-orb)"/><circle cx="160" cy="116" r="31" fill="url(#net-warm)"/><text x="160" y="120" text-anchor="middle">Sukriti</text></g><g class="net-node" data-agent="experience" transform="translate(160.0 32.0)" style="--i:0"><circle class="nn-halo" r="24"/><circle class="nn-ring" r="16"/><circle class="nn-dot" r="5.5"/><text y="-26" text-anchor="middle">Experience</text></g><g class="net-node" data-agent="projects" transform="translate(239.9 90.0)" style="--i:1"><circle class="nn-halo" r="24"/><circle class="nn-ring" r="16"/><circle class="nn-dot" r="5.5"/><text y="33" text-anchor="middle">Projects</text></g><g class="net-node" data-agent="recognition" transform="translate(209.4 184.0)" style="--i:2"><circle class="nn-halo" r="24"/><circle class="nn-ring" r="16"/><circle class="nn-dot" r="5.5"/><text y="33" text-anchor="middle">Recognition</text></g><g class="net-node" data-agent="education" transform="translate(110.6 184.0)" style="--i:3"><circle class="nn-halo" r="24"/><circle class="nn-ring" r="16"/><circle class="nn-dot" r="5.5"/><text y="33" text-anchor="middle">Education</text></g><g class="net-node" data-agent="careers" transform="translate(80.1 90.0)" style="--i:4"><circle class="nn-halo" r="24"/><circle class="nn-ring" r="16"/><circle class="nn-dot" r="5.5"/><text y="33" text-anchor="middle">Careers</text></g></svg>
+                <p class="net-status mono" id="hub-status">Five agents ready</p>
+                <form class="ask-form" id="ask-form">
+                  <label class="visually-hidden" for="ask-input">Ask a question about Sukriti</label>
+                  <input id="ask-input" name="question" type="text" maxlength="300" autocomplete="off"
+                    placeholder="Ask about my work" />
+                  <button class="btn btn-dark" type="submit" id="ask-submit">Ask</button>
+                </form>
+                <div class="suggestions" aria-label="Example questions">
+                  <button type="button" class="suggestion">What has she done in the past five years?</button>
+                  <button type="button" class="suggestion">What's her strongest project?</button>
+                  <button type="button" class="suggestion">What has she won?</button>
+                  <button type="button" class="suggestion">Is she open to new roles?</button>
+                </div>
+              </div>
+              <div class="col col-right">
+                <div class="conversation" id="conversation" aria-live="polite"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about" data-animate="fade-up">
-      <div class="about-container">
-        <div class="section-header">
-          <h2>About Me</h2>
-        </div>
-        <div class="about-content">
-          <div class="about-photo">
-            <img src="images/profile.jpeg" alt="Sukriti Sehgal" loading="lazy" />
-          </div>
-          <div class="section-body">
-            <p>I'm a Boulder-based Data Scientist and AI Engineer crafting predictive intelligence across consumer,
-              healthcare, education, and public-sector domains. I integrate cloud data engineering, machine learning,
-              and real-time analytics to accelerate decision-making and elevate user experiences.</p>
-            <br>
-            <p>From building intelligent automation systems at GoodieBag Food Co. to developing predictive ROI models at
-              C5 Consultare/University of Denver, and delivering production-grade ML systems for DRDO and Omdena teams—I
-              build solutions that balance technical rigor with practical usability.</p>
-            <br>
-            <p>Currently pursuing my MS in Data Science at University of Colorado Boulder (GPA: 3.8), where I serve as
-              <strong>Chair of the Data Science Student Association</strong>, pairing research depth with agile product
-              delivery.
-            </p>
-          </div>
-        </div>
+    <!-- Statement on a soft gradient -->
+    <section class="statement" aria-labelledby="statement-title">
+      <div class="wrap statement-inner reveal">
+        <div class="sec-orn"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sukriti holding out a heart"><defs><linearGradient id="f-giv-l" x1="0" x2="1"><stop offset="0" stop-color="#23238F" stop-opacity="0"/><stop offset=".25" stop-color="#23238F"/><stop offset=".75" stop-color="#23238F"/><stop offset="1" stop-color="#23238F" stop-opacity="0"/></linearGradient><mask id="f-giv-hair"><rect width="280" height="64" fill="#fff"/><circle cx="140" cy="17.04" r="7.95" fill="#000"/></mask><mask id="f-giv-face"><rect width="280" height="64" fill="#fff"/><ellipse cx="137.48" cy="16.91" rx="0.92" ry="0.92" fill="#000"><animate attributeName="ry" values="0.92;0.92;0.11;0.92;0.92" keyTimes="0;0.86;0.88;0.9;1" dur="6s" begin="4s" repeatCount="indefinite"/></ellipse><ellipse cx="142.52" cy="16.91" rx="0.92" ry="0.92" fill="#000"><animate attributeName="ry" values="0.92;0.92;0.11;0.11;0.92;0.92;0.11;0.92;0.92" keyTimes="0;0.55;0.575;0.6;0.62;0.86;0.88;0.9;1" dur="6s" begin="4s" repeatCount="indefinite"/></ellipse><path d="M137.55,19.36 Q140.00,22.62 142.45,19.36" fill="none" stroke="#000" stroke-width="0.88" stroke-linecap="round"><animate attributeName="d" values="M137.55,19.36 Q140.00,22.62 142.45,19.36;M137.55,19.36 Q140.00,22.62 142.45,19.36;M136.94,18.95 Q140.00,24.05 143.06,18.95;M136.94,18.95 Q140.00,24.05 143.06,18.95;M137.55,19.36 Q140.00,22.62 142.45,19.36;M137.55,19.36 Q140.00,22.62 142.45,19.36" keyTimes="0;0.5;0.56;0.66;0.72;1" dur="6s" begin="4s" repeatCount="indefinite"/></path></mask><mask id="f-giv-mb"><rect width="280" height="64" fill="#fff"/><path d="M131.90,27.80 C130.40,25.30 131.30,19.00 131.30,16.50 A8.70,8.70 0 0 1 148.70,16.50 C148.70,19.00 149.60,25.30 148.10,27.80 Q146.50,29.60 145.10,27.00 Q143.74,22.96 140.00,22.96 Q136.26,22.96 134.90,27.00 Q133.50,29.60 131.90,27.80 Z" fill="#000" stroke="#000" stroke-width="2.3"/><circle cx="140" cy="17.04" r="7.95" fill="#000"/></mask><mask id="f-giv-mh"><rect width="280" height="64" fill="#fff"/><path d="M140,33.2 C138.6,31 135.4,31.4 135.4,34 C135.4,36.4 138.2,38.1 140,39.6 C141.8,38.1 144.6,36.4 144.6,34 C144.6,31.4 141.4,31 140,33.2 Z" fill="#000" stroke="#000" stroke-width="2.4"/></mask></defs><g mask="url(#f-giv-mh)"><g mask="url(#f-giv-mb)" fill="#23238F"><path d="M133,29 Q140,26.5 147,29 L150.5,47 Q140,49.5 129.5,47 Z"/><rect x="132.6" y="46" width="4.2" height="8" rx="2.1"/><rect x="143.2" y="46" width="4.2" height="8" rx="2.1"/><path d="M133.5,31 Q129,37 136,38.5" fill="none" stroke="#23238F" stroke-width="3.8" stroke-linecap="round"/><path d="M146.5,31 Q151,37 144,38.5" fill="none" stroke="#23238F" stroke-width="3.8" stroke-linecap="round"/></g></g><g mask="url(#f-giv-hair)" fill="#23238F"><path d="M131.90,27.80 C130.40,25.30 131.30,19.00 131.30,16.50 A8.70,8.70 0 0 1 148.70,16.50 C148.70,19.00 149.60,25.30 148.10,27.80 Q146.50,29.60 145.10,27.00 Q143.74,22.96 140.00,22.96 Q136.26,22.96 134.90,27.00 Q133.50,29.60 131.90,27.80 Z"/></g><circle cx="140" cy="17.04" r="6.8" fill="#23238F" mask="url(#f-giv-face)"/><path d="M140,33.2 C138.6,31 135.4,31.4 135.4,34 C135.4,36.4 138.2,38.1 140,39.6 C141.8,38.1 144.6,36.4 144.6,34 C144.6,31.4 141.4,31 140,33.2 Z" fill="#23238F"/><circle cx="131" cy="27" r="1.1" fill="#23238F" opacity=".7"/><circle cx="150" cy="25" r="1.3" fill="#23238F" opacity=".8"/><circle cx="153" cy="33" r="0.9" fill="#23238F" opacity=".6"/><rect x="10" y="54" width="260" height="1.6" rx=".8" fill="url(#f-giv-l)"/><circle cx="176" cy="49" r="2.2" fill="#23238F" opacity="0.9"/><circle cx="187" cy="49" r="1.8" fill="#23238F" opacity="0.7"/><circle cx="197" cy="49" r="1.4" fill="#23238F" opacity="0.55"/><circle cx="206" cy="49" r="1.1" fill="#23238F" opacity="0.4"/><circle cx="104" cy="49" r="2.2" fill="#23238F" opacity="0.9"/><circle cx="93" cy="49" r="1.8" fill="#23238F" opacity="0.7"/><circle cx="83" cy="49" r="1.4" fill="#23238F" opacity="0.55"/><circle cx="74" cy="49" r="1.1" fill="#23238F" opacity="0.4"/></svg></div>
+        <p class="eyebrow-lines"><span class="dev">सुकृति</span> · “a good deed”</p>
+        <h2 id="statement-title">AI that does some good, in the real world.</h2>
+        <p>My name means “a good deed”. It's the brief I give every system I build: voice agents that find a patient a
+          bed faster, research tools that give clinicians their time back, and interviews that feel fairer.</p>
       </div>
     </section>
 
-    <!-- Experience Section -->
-    <section class="experience" id="experience" data-animate="fade-up">
-      <div class="section-header">
-        <h2>Experience</h2>
-        <p>High-impact data science initiatives across startups, research labs, and government innovation teams.</p>
-      </div>
-      <div class="timeline" aria-label="Professional experience timeline">
-        <article class="timeline-item" data-animate="fade-up">
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div class="timeline-content">
-            <h3>Course Assistant · University of Colorado Boulder</h3>
-            <p class="timeline-meta">Jan 2026 – Present · Boulder, CO</p>
-            <ul>
-              <li>Teaching Python, R, and Excel for data analysis to 120+ students as part of a data science curriculum at CU Boulder's civil engineering department.</li>
-              <li>Designed and delivered lab exercises in Python (pandas, NumPy, matplotlib) and R focused on data cleaning, EDA, and statistical analysis — directly bridging foundational tools to modern data science workflows.</li>
-              <li>Built beginner-friendly ML-inspired exercises covering data cleaning, feature intuition, and simple modeling to introduce students to applied machine learning concepts.</li>
-              <li>Guided students in translating Excel logic into Python/R workflows, reinforcing cross-tool thinking and computational reasoning essential for data engineering pipelines.</li>
-              <li>Debugged student code and provided detailed feedback on correctness, reproducibility, and analytical logic across 120+ lab submissions per cycle.</li>
-            </ul>
-          </div>
-        </article>
-        <article class="timeline-item" data-animate="fade-up">
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div class="timeline-content">
-            <h3>Data Science Intern · GoodieBag Food Co.</h3>
-            <p class="timeline-meta">Jun 2025 – Present · Boulder, CO</p>
-            <ul>
-              <li>Built a LangChain-based marketing agent to automate caption and story generation, improving content
-                creation speed by 55%.</li>
-              <li>Developed SQL pipelines computing 20+ KPIs across sales and marketing data, powering weekly reporting
-                for 10 stakeholders.</li>
-              <li>Built Tableau dashboards tracking ROI, engagement, and retention across 7+ campaigns; insights
-                supported marketing decisions impacting 20k+ active app users.</li>
-              <li>Integrated an NLP-powered support chatbot into the app by connecting Flutter UI with a FastAPI
-                backend.</li>
-              <li>Orchestrated n8n automation pipelines to route chatbot outputs through AI agents for tagging,
-                summarization, and workflow handoff.</li>
-            </ul>
-          </div>
-        </article>
-        <article class="timeline-item" data-animate="fade-up">
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div class="timeline-content">
-            <h3>Data Analytics & Application Development Intern · C5 Consultare / University of Denver</h3>
-            <p class="timeline-meta">Sept 2025 – Present · Arvada, CO</p>
-            <ul>
-              <li>Developed predictive regression models for ROI and debt-to-income forecasting using Python (Pandas,
-                NumPy, scikit-learn).</li>
-              <li>Built stakeholder-facing dashboards for repayment, ROI, and sensitivity analysis across 4.99%–8.05%
-                interest-rate scenarios.</li>
-              <li>Engineered a multi-state analytics dataset by standardizing College Scorecard + FREOPP into a unified
-                schema.</li>
-              <li>Automated data cleaning and feature engineering pipelines for 100k+ records; reduced runtime by 20%.
-              </li>
-            </ul>
-          </div>
-        </article>
-        <article class="timeline-item" data-animate="fade-up">
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div class="timeline-content">
-            <h3>Machine Learning Engineer Intern · Omdena</h3>
-            <p class="timeline-meta">Nov 2023 – Jun 2024 · Remote - Global</p>
-            <ul>
-              <li>Improved tuberculosis risk prediction pipeline using TensorFlow by optimizing preprocessing, training,
-                and evaluation.</li>
-              <li>Collaborated in a global Agile team to ship an end-to-end TB risk prototype (model + Streamlit app) by
-                deadline.</li>
-            </ul>
-          </div>
-        </article>
-        <article class="timeline-item" data-animate="fade-up">
-          <div class="timeline-marker" aria-hidden="true"></div>
-          <div class="timeline-content">
-            <h3>Machine Learning Intern · DRDO (Defence Research & Development Organisation)</h3>
-            <p class="timeline-meta">Oct 2022 – Jan 2023 · New Delhi, India</p>
-            <ul>
-              <li>Implemented secure NLP workflows using one-time/two-time pad encryption techniques for
-                privacy-preserving text processing.</li>
-              <li>Built a Transformer-based summarization pipeline using Hugging Face + spaCy on 10k+ documents;
-                achieved 0.85+ BERTScore.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects" data-animate="fade-up">
-      <div class="section-header">
-        <h2>Featured Projects</h2>
-        <p>Data and AI projects highlighting large-scale analytics, intelligent automation, and production ML systems.
-        </p>
-      </div>
-      <div class="project-grid">
-        <article class="project-card pinned" data-animate="fade-up" data-keywords="video meetings ai collaboration">
-          <div class="project-card-header">
-            <h3>Yoodle — Meetings for the New Workforce</h3>
-          </div>
-          <p>An open-source video collaboration platform combining HD video calls, an AI-powered meeting assistant, shared workspaces, and ephemeral "Ghost Rooms" for brainstorming. The AI sidekick auto-generates notes, tasks, and follow-ups so teams can focus on work instead of admin. Fully self-hostable and MIT-licensed.</p>
-          <ul class="tech-tags">
-            <li>Docker</li>
-            <li>Redis</li>
-            <li>MongoDB</li>
-            <li>LiveKit</li>
-            <li>AI Assistant</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://yoodle.vercel.app/" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View live demo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                <polyline points="15 3 21 3 21 9" />
-                <line x1="10" y1="14" x2="21" y2="3" />
-              </svg>
-            </a>
-            <a href="https://github.com/sukritisehgal-28/Yoodle" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="project-card pinned" data-animate="fade-up" data-keywords="medical ai langchain">
-          <div class="project-card-header">
-            <h3>Secure Medical AI</h3>
-          </div>
-          <p>Built a secure clinical documentation platform with role-based dashboards, note templates, and scheduling
-            workflows. Implemented summarization + semantic search with LangChain (GPT-4) and FAISS embeddings for
-            retrieval over clinical notes.</p>
-          <ul class="tech-tags">
-            <li>React</li>
-            <li>TypeScript</li>
-            <li>FastAPI</li>
-            <li>PostgreSQL</li>
-            <li>GCP</li>
-            <li>Docker</li>
-            <li>LangChain</li>
-            <li>GPT-4</li>
-            <li>FAISS</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://youtu.be/iyclbDlEuXg?si=0ieFKZl1cSTuFTjW" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View demo on YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-            </a>
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="project-card pinned" data-animate="fade-up" data-keywords="yolo computer vision retail">
-          <div class="project-card-header">
-            <h3>OmniShelf AI – Retail Shelf Intelligence</h3>
-          </div>
-          <p>Built an end-to-end shelf intelligence system for product detection, planogram comparison, and out-of-stock
-            alerting. Developed a 3-stage CV pipeline with YOLOv11s fine-tuned on Grozi-120 achieving mAP@50 95.51%,
-            precision 84.89%, recall 88.52%.</p>
-          <ul class="tech-tags">
-            <li>YOLOv11</li>
-            <li>FastAPI</li>
-            <li>React</li>
-            <li>TypeScript</li>
-            <li>PostgreSQL</li>
-            <li>GPT-4o</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://youtu.be/DcdsqbaZNQo?si=TzF4-vbKSfeaobM5" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View demo on YouTube">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-            </a>
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="project-card pinned" data-animate="fade-up" data-keywords="vr ai interview ar">
-          <div class="project-card-header">
-            <h3>InterViewAR – AI-Powered VR Interview Platform 🏆</h3>
-          </div>
-          <p>CalHacks 12.0 Winner (Best ASI Personality Agent). Built an immersive VR interview experience using
-            Fetch.ai agent verse for intelligent conversation flow, Groq Whisper for real-time speech-to-text, FastAPI
-            backend, and WebXR for cross-platform VR compatibility.</p>
-          <ul class="tech-tags">
-            <li>Fetch.ai</li>
-            <li>Groq Whisper</li>
-            <li>FastAPI</li>
-            <li>WebXR</li>
-            <li>Python</li>
-            <li>VR</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://medium.com/fetch-ai/agentviewar-building-empathy-into-interviews-with-fetch-ai-agents-e2c6ebb0d8ad"
-              target="_blank" rel="noopener" class="icon-link" aria-label="Read article on Medium">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
-              </svg>
-            </a>
-            <a href="https://devpost.com/software/interviewar" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View project on Devpost">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c.009-2.569-1.096-3.853-3.767-3.853z" />
-              </svg>
-            </a>
-            <a href="https://github.com/sukritisehgal-28/InterVIew-AR-Calhacks2025" target="_blank" rel="noopener"
-              class="icon-link" aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="project-card" data-animate="fade-up" data-keywords="fashion sustainability nlp">
-          <div class="project-card-header">
-            <h3>Fashion Sustainability Analysis</h3>
-          </div>
-          <p>Analyzed sustainability practices across fashion brands using NLP and sentiment analysis on 50K+ customer
-            reviews and brand reports. Built classification models to identify greenwashing patterns and genuine
-            eco-friendly initiatives.</p>
-          <ul class="tech-tags">
-            <li>Python</li>
-            <li>NLP</li>
-            <li>Pandas</li>
-            <li>BERT</li>
-            <li>Streamlit</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="project-card" data-animate="fade-up" data-keywords="fandango regression statistics">
-          <div class="project-card-header">
-            <h3>Bias Detection in Fandango Ratings</h3>
-          </div>
-          <p>Audited 10K+ movie ratings to confirm score inflation with ~90% statistical confidence using regression
-            analysis and t-tests. Uncovered systematic bias in Fandango's rating system compared to other platforms.</p>
-          <ul class="tech-tags">
-            <li>Python</li>
-            <li>Pandas</li>
-            <li>Statistics</li>
-            <li>Matplotlib</li>
-            <li>Seaborn</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-          </div>
-        </article>
-
-        <article class="project-card" data-animate="fade-up" data-keywords="fitness cv computer vision">
-          <div class="project-card-header">
-            <h3>AI Fitness Coach</h3>
-          </div>
-          <p>Delivered real-time skeletal tracking with OpenCV and MediaPipe to classify form accuracy at ~90% using
-            cosine similarity. Provides instant feedback on exercise posture and rep counting for home workouts.</p>
-          <ul class="tech-tags">
-            <li>Python</li>
-            <li>OpenCV</li>
-            <li>MediaPipe</li>
-            <li>TensorFlow</li>
-            <li>Streamlit</li>
-          </ul>
-          <div class="project-links">
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View repository on GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.71-2.78.61-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.63.07-.62.07-.62 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.52 9.52 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.92.36.31.68.92.68 1.86 0 1.34-.01 2.42-.01 2.75 0 .26.18.58.69.48A10 10 0 0 0 12 2z" />
-              </svg>
-            </a>
-          </div>
-        </article>
-      </div>
-      <div class="section-actions">
-        <a class="btn ghost" href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener">View All on
-          GitHub</a>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills" data-animate="fade-up">
-      <div class="section-header">
-        <h2>Skills & Expertise</h2>
-        <p>Technologies and methodologies I use to build data-driven solutions.</p>
-      </div>
-      <div class="skill-groups">
-        <div class="skill-group" data-animate="fade-up">
-          <h3>Programming & Data</h3>
-          <ul>
-            <li>Python</li>
-            <li>Pandas</li>
-            <li>NumPy</li>
-            <li>SciPy</li>
-            <li>SQL</li>
-            <li>T-SQL</li>
-            <li>SparkSQL</li>
-            <li>R</li>
-            <li>Dart</li>
-          </ul>
+    <!-- Journey grouped by year -->
+    <section class="section" id="journey" aria-labelledby="journey-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="sec-orn"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sukriti lifting a spark"><defs><linearGradient id="f-bld-l" x1="0" x2="1"><stop offset="0" stop-color="#23238F" stop-opacity="0"/><stop offset=".25" stop-color="#23238F"/><stop offset=".75" stop-color="#23238F"/><stop offset="1" stop-color="#23238F" stop-opacity="0"/></linearGradient><mask id="f-bld-hair"><rect width="280" height="64" fill="#fff"/><circle cx="136" cy="16.74" r="7.95" fill="#000"/></mask><mask id="f-bld-face"><rect width="280" height="64" fill="#fff"/><ellipse cx="133.48" cy="16.61" rx="0.92" ry="0.92" fill="#000"><animate attributeName="ry" values="0.92;0.92;0.11;0.92;0.92" keyTimes="0;0.86;0.88;0.9;1" dur="6s" begin="0s" repeatCount="indefinite"/></ellipse><ellipse cx="138.52" cy="16.61" rx="0.92" ry="0.92" fill="#000"><animate attributeName="ry" values="0.92;0.92;0.11;0.11;0.92;0.92;0.11;0.92;0.92" keyTimes="0;0.55;0.575;0.6;0.62;0.86;0.88;0.9;1" dur="6s" begin="0s" repeatCount="indefinite"/></ellipse><path d="M133.55,19.06 Q136.00,22.32 138.45,19.06" fill="none" stroke="#000" stroke-width="0.88" stroke-linecap="round"><animate attributeName="d" values="M133.55,19.06 Q136.00,22.32 138.45,19.06;M133.55,19.06 Q136.00,22.32 138.45,19.06;M132.94,18.65 Q136.00,23.75 139.06,18.65;M132.94,18.65 Q136.00,23.75 139.06,18.65;M133.55,19.06 Q136.00,22.32 138.45,19.06;M133.55,19.06 Q136.00,22.32 138.45,19.06" keyTimes="0;0.5;0.56;0.66;0.72;1" dur="6s" begin="0s" repeatCount="indefinite"/></path></mask><mask id="f-bld-mb"><rect width="280" height="64" fill="#fff"/><path d="M127.90,27.50 C126.40,25.00 127.30,18.70 127.30,16.20 A8.70,8.70 0 0 1 144.70,16.20 C144.70,18.70 145.60,25.00 144.10,27.50 Q142.50,29.30 141.10,26.70 Q139.74,22.66 136.00,22.66 Q132.26,22.66 130.90,26.70 Q129.50,29.30 127.90,27.50 Z" fill="#000" stroke="#000" stroke-width="2.3"/><circle cx="136" cy="16.74" r="7.95" fill="#000"/></mask></defs><g mask="url(#f-bld-mb)" fill="#23238F"><path d="M129,28.5 Q136,26 143,28.5 L146.5,46 Q136,48.5 125.5,46 Z"/><rect x="128.6" y="45" width="4.2" height="9" rx="2.1"/><rect x="139.2" y="45" width="4.2" height="9" rx="2.1"/><path d="M142.5,30 L153.5,17.5" stroke="#23238F" stroke-width="4.2" stroke-linecap="round"/><path d="M129.5,30.5 L126.5,41" stroke="#23238F" stroke-width="4.2" stroke-linecap="round"/></g><g mask="url(#f-bld-hair)" fill="#23238F"><path d="M127.90,27.50 C126.40,25.00 127.30,18.70 127.30,16.20 A8.70,8.70 0 0 1 144.70,16.20 C144.70,18.70 145.60,25.00 144.10,27.50 Q142.50,29.30 141.10,26.70 Q139.74,22.66 136.00,22.66 Q132.26,22.66 130.90,26.70 Q129.50,29.30 127.90,27.50 Z"/></g><circle cx="136" cy="16.74" r="6.8" fill="#23238F" mask="url(#f-bld-face)"/><path d="M158,3.0 C159.2,9.3 159.2,9.3 165.5,10.5 C159.2,11.7 159.2,11.7 158,18.0 C156.8,11.7 156.8,11.7 150.5,10.5 C156.8,9.3 156.8,9.3 158,3.0 Z" fill="#23238F"/><circle cx="167.5" cy="7" r="1.3" fill="#23238F" opacity=".8"/><circle cx="166" cy="18" r="1" fill="#23238F" opacity=".6"/><circle cx="150" cy="4.5" r="1" fill="#23238F" opacity=".6"/><rect x="10" y="54" width="260" height="1.6" rx=".8" fill="url(#f-bld-l)"/><circle cx="176" cy="49" r="2.2" fill="#23238F" opacity="0.9"/><circle cx="187" cy="49" r="1.8" fill="#23238F" opacity="0.7"/><circle cx="197" cy="49" r="1.4" fill="#23238F" opacity="0.55"/><circle cx="206" cy="49" r="1.1" fill="#23238F" opacity="0.4"/><circle cx="104" cy="49" r="2.2" fill="#23238F" opacity="0.9"/><circle cx="93" cy="49" r="1.8" fill="#23238F" opacity="0.7"/><circle cx="83" cy="49" r="1.4" fill="#23238F" opacity="0.55"/><circle cx="74" cy="49" r="1.1" fill="#23238F" opacity="0.4"/></svg></div>
+          <p class="eyebrow-lines">From New Delhi to the Bay Area</p>
+          <h2 id="journey-title">Journey</h2>
         </div>
-        <div class="skill-group" data-animate="fade-up">
-          <h3>ML & AI</h3>
-          <ul>
-            <li>Scikit-learn</li>
-            <li>TensorFlow</li>
-            <li>PyTorch</li>
-            <li>Hugging Face</li>
-            <li>LangChain</li>
-            <li>NLP</li>
-            <li>Deep Learning</li>
-            <li>Time Series</li>
-          </ul>
-        </div>
-        <div class="skill-group" data-animate="fade-up">
-          <h3>Data & Cloud</h3>
-          <ul>
-            <li>PostgreSQL</li>
-            <li>MySQL</li>
-            <li>MongoDB</li>
-            <li>Apache Spark</li>
-            <li>Hadoop</li>
-            <li>AWS</li>
-            <li>Azure</li>
-            <li>GCP</li>
-            <li>Docker</li>
-            <li>FastAPI</li>
-          </ul>
-        </div>
-        <div class="skill-group" data-animate="fade-up">
-          <h3>Analytics & Visualization</h3>
-          <ul>
-            <li>Statistical Modeling</li>
-            <li>A/B Testing</li>
-            <li>EDA</li>
-            <li>Feature Engineering</li>
-            <li>Tableau</li>
-            <li>Power BI</li>
-            <li>Matplotlib</li>
-            <li>Seaborn</li>
-          </ul>
+        <div class="years">
+          <div class="year reveal"><div class="yr"><b>2026</b></div><div class="rows"><button type="button" class="jrow" data-exp="healthcare-ai-hackathon"><span class="sq sq-rec"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M8.6 13.4 7.5 21l4.5-2.4 4.5 2.4-1.1-7.6"/><path d="M12 6.4l.8 1.7 1.8.2-1.3 1.2.4 1.8-1.7-.9-1.7.9.4-1.8-1.3-1.2 1.8-.2z" fill="currentColor" stroke="none"/></svg></span><span class="jt"><b>Healthcare AI Hackathon: 2nd Place + People&#x27;s Choice</b><span>AWS Builder Loft</span></span><span class="jd mono">Sep 2026</span><span class="go" aria-hidden="true">›</span></button><button type="button" class="jrow" data-exp="cu-innovation-day"><span class="sq sq-rec"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2.5c.6 4.6 2.9 6.9 9.5 9.5-6.6 2.6-8.9 4.9-9.5 9.5-.6-4.6-2.9-6.9-9.5-9.5 6.6-2.6 8.9-4.9 9.5-9.5z"/></svg></span><span class="jt"><b>Feature Innovator, CU Innovation Day</b><span>University of Colorado</span></span><span class="jd mono"></span><span class="go" aria-hidden="true">›</span></button><button type="button" class="jrow" data-exp="oriva-health"><span class="sq sq-founder"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 21v-8"/><path d="M12 13c0-4.2 3-6.8 7.5-6.8 0 4.3-3 6.8-7.5 6.8z"/><path d="M12 15.5c0-3.3-2.4-5.6-6.5-5.6 0 3.4 2.4 5.6 6.5 5.6z"/></svg></span><span class="jt"><b>Co-Founder</b><span>Oriva Health</span></span><span class="jd mono">Now</span><span class="go" aria-hidden="true">›</span></button><button type="button" class="jrow" data-exp="course-assistant"><span class="sq sq-exp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></svg></span><span class="jt"><b>Course Assistant</b><span>University of Colorado Boulder</span></span><span class="jd mono">2026</span><span class="go" aria-hidden="true">›</span></button></div></div>
+          <div class="year reveal"><div class="yr"><b>2025</b></div><div class="rows"><button type="button" class="jrow" data-exp="calhacks"><span class="sq sq-rec"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="9" r="5.5"/><path d="M8.6 13.4 7.5 21l4.5-2.4 4.5 2.4-1.1-7.6"/><path d="M12 6.4l.8 1.7 1.8.2-1.3 1.2.4 1.8-1.7-.9-1.7.9.4-1.8-1.3-1.2 1.8-.2z" fill="currentColor" stroke="none"/></svg></span><span class="jt"><b>CalHacks 12.0 Winner, Fetch.ai Track</b><span>CalHacks 12.0</span></span><span class="jd mono">Oct 2025</span><span class="go" aria-hidden="true">›</span></button><button type="button" class="jrow" data-exp="c5-consultare"><span class="sq sq-exp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></svg></span><span class="jt"><b>Data Analytics Intern</b><span>C5 Consultare / University of Denver</span></span><span class="jd mono">2025 – 2026</span><span class="go" aria-hidden="true">›</span></button><button type="button" class="jrow" data-exp="goodiebag"><span class="sq sq-exp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></svg></span><span class="jt"><b>Data Science &amp; AI Intern</b><span>GoodieBag Food Co.</span></span><span class="jd mono">2025 – 2026</span><span class="go" aria-hidden="true">›</span></button></div></div>
+          <div class="year reveal"><div class="yr"><b>2024</b></div><div class="rows"><button type="button" class="jrow" data-exp="ms-cu-boulder"><span class="sq sq-edu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 9 12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v4.6c0 1.4 2.5 2.9 5.5 2.9s5.5-1.5 5.5-2.9V11M21.5 9v5.5"/></svg></span><span class="jt"><b>MS, Data Science</b><span>University of Colorado Boulder</span></span><span class="jd mono">2024 – 2026</span><span class="go" aria-hidden="true">›</span></button></div></div>
+          <div class="year reveal"><div class="yr"><b>2019</b><span class="to">to 2023</span></div><div class="rows"><button type="button" class="jrow" data-exp="omdena"><span class="sq sq-exp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></svg></span><span class="jt"><b>Machine Learning Engineer Intern</b><span>Omdena</span></span><span class="jd mono">2023 – 2024</span><span class="go" aria-hidden="true">›</span></button><button type="button" class="jrow" data-exp="drdo"><span class="sq sq-exp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></svg></span><span class="jt"><b>Machine Learning Intern</b><span>DRDO</span></span><span class="jd mono">2022 – 2023</span><span class="go" aria-hidden="true">›</span></button><button type="button" class="jrow" data-exp="niti-aayog"><span class="sq sq-exp"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h4a1.5 1.5 0 0 1 1.5 1.5V7M3 12.5h18"/></svg></span><span class="jt"><b>Research Intern</b><span>NITI Aayog</span></span><span class="jd mono"></span><span class="go" aria-hidden="true">›</span></button><button type="button" class="jrow" data-exp="btech"><span class="sq sq-edu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 9 12 4.5 21.5 9 12 13.5z"/><path d="M6.5 11v4.6c0 1.4 2.5 2.9 5.5 2.9s5.5-1.5 5.5-2.9V11M21.5 9v5.5"/></svg></span><span class="jt"><b>B.Tech, Electronics &amp; Communication Engineering</b><span>Maharaja Surajmal Institute of Technology</span></span><span class="jd mono">2019 – 2023</span><span class="go" aria-hidden="true">›</span></button></div></div>
         </div>
       </div>
     </section>
 
-    <!-- Leadership & Awards -->
-    <section class="leadership" id="leadership" data-animate="fade-up">
-      <div class="section-header">
-        <h2>Leadership & Awards</h2>
-      </div>
-      <div class="leadership-content">
-        <article class="leadership-card" data-animate="fade-up">
-          <h3>Chair — Data Science Student Association (CU Boulder)</h3>
-          <p class="leadership-meta">2024 – Present</p>
-          <ul>
-            <li>Leading a student board delivering workshops, speaker events, and community programming for the MS-DS
-              cohort.</li>
-          </ul>
-        </article>
-        <article class="leadership-card" data-animate="fade-up">
-          <h3>CalHacks 12.0 Winner — Best ASI Personality Agent</h3>
-          <p class="leadership-meta">Oct 2025 · San Francisco, CA</p>
-          <ul>
-            <li>Won for InterViewAR, a VR-based AI interview experience using Fetch.ai agent verse, Groq Whisper,
-              FastAPI, and WebXR.</li>
-          </ul>
-          <div class="project-links" style="margin-top: 1rem;">
-            <a href="https://medium.com/fetch-ai/agentviewar-building-empathy-into-interviews-with-fetch-ai-agents-e2c6ebb0d8ad"
-              target="_blank" rel="noopener" class="icon-link" aria-label="Read article on Medium">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
-              </svg>
-            </a>
-            <a href="https://devpost.com/software/interviewar" target="_blank" rel="noopener" class="icon-link"
-              aria-label="View project on Devpost">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
-                <path
-                  d="M6.002 1.61L0 12.004L6.002 22.39h11.996L24 12.004L17.998 1.61zm1.593 4.084h3.947c3.605 0 6.276 1.695 6.276 6.31c0 4.436-3.21 6.302-6.456 6.302H7.595zm2.517 2.449v7.714h1.241c2.646 0 3.862-1.55 3.862-3.861c.009-2.569-1.096-3.853-3.767-3.853z" />
-              </svg>
-            </a>
+    <!-- Projects: one carousel, arrows to flip through -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="sec-orn sec-orn-wide"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sukriti presenting a project"><defs><linearGradient id="f-pre-l" x1="0" x2="1"><stop offset="0" stop-color="#23238F" stop-opacity="0"/><stop offset=".25" stop-color="#23238F"/><stop offset=".75" stop-color="#23238F"/><stop offset="1" stop-color="#23238F" stop-opacity="0"/></linearGradient><mask id="f-pre-hair"><rect width="280" height="64" fill="#fff"/><circle cx="128" cy="18.04" r="7.95" fill="#000"/></mask><mask id="f-pre-face"><rect width="280" height="64" fill="#fff"/><ellipse cx="125.48" cy="17.91" rx="0.92" ry="0.92" fill="#000"><animate attributeName="ry" values="0.92;0.92;0.11;0.92;0.92" keyTimes="0;0.86;0.88;0.9;1" dur="6s" begin="2s" repeatCount="indefinite"/></ellipse><ellipse cx="130.52" cy="17.91" rx="0.92" ry="0.92" fill="#000"><animate attributeName="ry" values="0.92;0.92;0.11;0.11;0.92;0.92;0.11;0.92;0.92" keyTimes="0;0.55;0.575;0.6;0.62;0.86;0.88;0.9;1" dur="6s" begin="2s" repeatCount="indefinite"/></ellipse><path d="M125.55,20.36 Q128.00,23.62 130.45,20.36" fill="none" stroke="#000" stroke-width="0.88" stroke-linecap="round"><animate attributeName="d" values="M125.55,20.36 Q128.00,23.62 130.45,20.36;M125.55,20.36 Q128.00,23.62 130.45,20.36;M124.94,19.95 Q128.00,25.05 131.06,19.95;M124.94,19.95 Q128.00,25.05 131.06,19.95;M125.55,20.36 Q128.00,23.62 130.45,20.36;M125.55,20.36 Q128.00,23.62 130.45,20.36" keyTimes="0;0.5;0.56;0.66;0.72;1" dur="6s" begin="2s" repeatCount="indefinite"/></path></mask><mask id="f-pre-mb"><rect width="280" height="64" fill="#fff"/><path d="M119.90,28.80 C118.40,26.30 119.30,20.00 119.30,17.50 A8.70,8.70 0 0 1 136.70,17.50 C136.70,20.00 137.60,26.30 136.10,28.80 Q134.50,30.60 133.10,28.00 Q131.74,23.96 128.00,23.96 Q124.26,23.96 122.90,28.00 Q121.50,30.60 119.90,28.80 Z" fill="#000" stroke="#000" stroke-width="2.3"/><circle cx="128" cy="18.04" r="7.95" fill="#000"/></mask><mask id="f-pre-ms"><rect width="280" height="64" fill="#fff"/><path d="M163,21 l9,5.5 -9,5.5 z" fill="#000"/></mask></defs><g mask="url(#f-pre-mb)" fill="#23238F"><path d="M121,30 Q128,27.5 135,30 L138.5,47 Q128,49.5 117.5,47 Z"/><rect x="120.6" y="46" width="4.2" height="8" rx="2.1"/><rect x="131.2" y="46" width="4.2" height="8" rx="2.1"/><path d="M134.5,31.5 L145,25" stroke="#23238F" stroke-width="4" stroke-linecap="round"/><path d="M121.5,32 L118.5,42" stroke="#23238F" stroke-width="4" stroke-linecap="round"/></g><g mask="url(#f-pre-hair)" fill="#23238F"><path d="M119.90,28.80 C118.40,26.30 119.30,20.00 119.30,17.50 A8.70,8.70 0 0 1 136.70,17.50 C136.70,20.00 137.60,26.30 136.10,28.80 Q134.50,30.60 133.10,28.00 Q131.74,23.96 128.00,23.96 Q124.26,23.96 122.90,28.00 Q121.50,30.60 119.90,28.80 Z"/></g><circle cx="128" cy="18.04" r="6.8" fill="#23238F" mask="url(#f-pre-face)"/><rect x="149" y="10" width="34" height="24" rx="4" fill="#23238F" mask="url(#f-pre-ms)"/><rect x="164.6" y="34" width="2.8" height="9" rx="1.4" fill="#23238F"/><rect x="158" y="42" width="16" height="2.6" rx="1.3" fill="#23238F"/><circle cx="188" cy="9" r="1.3" fill="#23238F" opacity=".7"/><circle cx="145" cy="7" r="1" fill="#23238F" opacity=".6"/><rect x="10" y="54" width="260" height="1.6" rx=".8" fill="url(#f-pre-l)"/><circle cx="180" cy="49" r="2.2" fill="#23238F" opacity="0.9"/><circle cx="191" cy="49" r="1.8" fill="#23238F" opacity="0.7"/><circle cx="201" cy="49" r="1.4" fill="#23238F" opacity="0.55"/><circle cx="210" cy="49" r="1.1" fill="#23238F" opacity="0.4"/><circle cx="100" cy="49" r="2.2" fill="#23238F" opacity="0.9"/><circle cx="89" cy="49" r="1.8" fill="#23238F" opacity="0.7"/><circle cx="79" cy="49" r="1.4" fill="#23238F" opacity="0.55"/><circle cx="70" cy="49" r="1.1" fill="#23238F" opacity="0.4"/></svg></div>
+          <p class="eyebrow-lines">Selected work</p>
+          <h2 id="projects-title">Projects</h2>
+          <p class="section-lead">From one-day hackathon builds to a company of my own. Flip through with the arrows.</p>
+        </div>
+
+        <div class="carousel reveal" role="region" aria-roledescription="carousel" aria-label="Projects">
+          <div class="car-bar">
+            <button class="car-btn" id="car-prev" type="button" aria-label="Previous project" aria-controls="car-track">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <div class="car-pills" id="car-pills"><button type="button" class="car-pill" data-to="0" aria-current="true">Project Uzima</button><button type="button" class="car-pill" data-to="1">Oriva Health</button><button type="button" class="car-pill" data-to="2">ATLAS-MD</button><button type="button" class="car-pill" data-to="3">InterViewAR</button><button type="button" class="car-pill" data-to="4">OmniShelf AI</button><button type="button" class="car-pill" data-to="5">Secure Medical AI</button><button type="button" class="car-pill" data-to="6">Yoodle</button></div>
+            <button class="car-btn" id="car-next" type="button" aria-label="Next project" aria-controls="car-track">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
           </div>
-        </article>
-        <article class="leadership-card" data-animate="fade-up">
-          <h3>Certifications</h3>
-          <ul>
-            <li>Certified Artificial Intelligence Engineer (USAII)</li>
-            <li>Google Analytics</li>
-          </ul>
-        </article>
+          <div class="car-track" id="car-track" tabindex="0" aria-label="Projects, use the arrow keys to move between them">
+            <article class="slide tint-saffron" id="project-uzima" data-key="uzima" aria-roledescription="slide" aria-label="1 of 7: Project Uzima">
+              <div class="slide-viz" data-view="live">
+                <div class="layer-live"><div class="fan" id="voice-fan" aria-hidden="true"><svg class="fan-lines" viewBox="0 0 520 400" preserveAspectRatio="none"><path class="fan-line" data-i="0" d="M260,200 C180.0,200 180.0,70 100,70"/><path class="fan-line" data-i="1" d="M260,200 C174.0,200 174.0,200 88,200"/><path class="fan-line" data-i="2" d="M260,200 C180.0,200 180.0,330 100,330"/><path class="fan-line" data-i="3" d="M260,200 C340.0,200 340.0,70 420,70"/><path class="fan-line" data-i="4" d="M260,200 C346.0,200 346.0,200 432,200"/><path class="fan-line" data-i="5" d="M260,200 C340.0,200 340.0,330 420,330"/></svg><div class="hosp l" data-i="0" style="--x:19.2%;--y:17.5%"><span class="hn">Mercy General</span><i class="hs"><span class="wave"><b></b><b></b><b></b><b></b></span><em>calling</em></i></div><div class="hosp l" data-i="1" style="--x:16.9%;--y:50.0%"><span class="hn">St. Luke&#x27;s</span><i class="hs"><span class="wave"><b></b><b></b><b></b><b></b></span><em>calling</em></i></div><div class="hosp l" data-i="2" style="--x:19.2%;--y:82.5%"><span class="hn">Valley Medical</span><i class="hs"><span class="wave"><b></b><b></b><b></b><b></b></span><em>calling</em></i></div><div class="hosp r" data-i="3" style="--x:80.8%;--y:17.5%"><span class="hn">Riverside</span><i class="hs"><span class="wave"><b></b><b></b><b></b><b></b></span><em>calling</em></i></div><div class="hosp r" data-i="4" style="--x:83.1%;--y:50.0%"><span class="hn">County Hospital</span><i class="hs"><span class="wave"><b></b><b></b><b></b><b></b></span><em>calling</em></i></div><div class="hosp r" data-i="5" style="--x:80.8%;--y:82.5%"><span class="hn">Northside</span><i class="hs"><span class="wave"><b></b><b></b><b></b><b></b></span><em>calling</em></i></div><div class="fan-hub">Uzima<br />agent</div></div></div>
+                <div class="layer-shot"><img src="images/projects/uzima.jpg" alt="Project Uzima screenshot" loading="lazy" decoding="async" /></div><div class="view-toggle" role="group" aria-label="Choose view"><button type="button" data-view="live" aria-pressed="true">Live</button><button type="button" data-view="shot" aria-pressed="false">Screenshot</button></div><button type="button" class="replay" id="voice-replay">Replay</button><p class="stage-cap mono" id="voice-cap">Calling 6 hospitals at once · illustrative</p>
+              </div>
+              <div class="slide-info">
+                <span class="kchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 10v4M7.5 7v10M11 4v16M14.5 8v8M18 10.5v3M21 11.5v1"/></svg>Voice agents · 2026</span>
+                <h3>Project Uzima</h3>
+                <dl class="facts">
+                  <div><dt>Result</dt><dd>2nd Place + People&#x27;s Choice, Healthcare AI Hackathon</dd></div>
+                  <div><dt>Build</dt><dd>Voice agents that call every capable hospital at once</dd></div>
+                  <div><dt>Stack</dt><dd><ul class="stack"><li>FastAPI</li><li>Twilio</li><li>AWS Bedrock</li></ul></dd></div>
+                </dl>
+                <div class="links-line"><a href="https://youtu.be/xUHAnPiojRM" target="_blank" rel="noopener">Watch demo</a><a href="https://project-uzima.vercel.app/" target="_blank" rel="noopener">Live site</a><a href="https://github.com/sukritisehgal-28/project-uzima" target="_blank" rel="noopener">Code</a></div>
+              </div>
+            </article>
+            <article class="slide tint-rose" id="project-oriva-health" data-key="oriva" aria-roledescription="slide" aria-label="2 of 7: Oriva Health">
+              <div class="slide-viz" data-view="live">
+                <div class="layer-live"><div class="viz viz-call" aria-hidden="true"><div class="call"><div class="call-head"><span class="live-dot"></span><span class="mono">Patient call · Spanish</span><span class="wave"><b></b><b></b><b></b><b></b></span></div><div class="bub r" style="--i:0">Hola, me duele mucho una muela desde anoche.</div><div class="bub" style="--i:1">Lo siento. ¿El dolor es constante o solo al masticar?</div><div class="bub r" style="--i:2">Constante, y tengo la cara un poco hinchada.</div></div><div class="triage" style="--i:3"><span class="mono">For the front desk · in English</span><b>Urgent: see today</b><span>Constant pain with swelling. Book the first open slot.</span></div></div></div>
+                <div class="layer-shot"><img src="images/gallery/oriva-booth.jpg" alt="Oriva Health photo" loading="lazy" decoding="async" /></div><div class="view-toggle" role="group" aria-label="Choose view"><button type="button" data-view="live" aria-pressed="true">Live</button><button type="button" data-view="shot" aria-pressed="false">Photo</button></div><p class="stage-cap mono">Illustrative call</p>
+              </div>
+              <div class="slide-info">
+                <span class="kchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 10v4M7.5 7v10M11 4v16M14.5 8v8M18 10.5v3M21 11.5v1"/></svg>Voice + clinical AI · Founder</span>
+                <h3>Oriva Health</h3>
+                <dl class="facts">
+                  <div><dt>Result</dt><dd>Tested across 1,300+ cases · $25K from Catalyze CU</dd></div>
+                  <div><dt>Build</dt><dd>An English and Spanish voice agent with clinical triage for dental practices</dd></div>
+                  <div><dt>Stack</dt><dd><ul class="stack"><li>Voice AI</li><li>Clinical AI</li><li>FastAPI</li><li>GCP</li></ul></dd></div>
+                </dl>
+                <div class="links-line"><a href="https://youtu.be/rP_-zpdLY78" target="_blank" rel="noopener">Watch demo</a><a href="https://www.oriva.health/" target="_blank" rel="noopener">Website</a></div>
+              </div>
+            </article>
+            <article class="slide tint-peri" id="project-atlas-md" data-key="atlas" aria-roledescription="slide" aria-label="3 of 7: ATLAS-MD">
+              <div class="slide-viz" data-view="live">
+                <div class="layer-live"><div class="viz viz-graph" aria-hidden="true"><div class="query"><span class="mono">Example question</span>Does dapagliflozin help in CKD with diabetes?</div><svg viewBox="0 0 460 320"><line class="ge " pathLength="1" style="--i:0" x1="230" y1="168" x2="122" y2="104"/><line class="ge " pathLength="1" style="--i:1" x1="230" y1="168" x2="348" y2="92"/><line class="ge " pathLength="1" style="--i:2" x1="230" y1="168" x2="92" y2="236"/><line class="ge ge-c" pathLength="1" style="--i:3" x1="230" y1="168" x2="370" y2="240"/><line class="ge " pathLength="1" style="--i:4" x1="230" y1="168" x2="250" y2="282"/><line class="ge " pathLength="1" style="--i:5" x1="122" y1="104" x2="168" y2="58"/><line class="ge " pathLength="1" style="--i:6" x1="348" y1="92" x2="428" y2="166"/><line class="ge " pathLength="1" style="--i:7" x1="370" y1="240" x2="428" y2="166"/><line class="ge " pathLength="1" style="--i:8" x1="122" y1="104" x2="92" y2="236"/><line class="ge " pathLength="1" style="--i:9" x1="348" y1="92" x2="300" y2="44"/><circle class="gn n0" style="--i:0" cx="230" cy="168" r="24"/><circle class="gn n1" style="--i:1" cx="122" cy="104" r="15"/><circle class="gn n1" style="--i:2" cx="348" cy="92" r="18"/><circle class="gn n2" style="--i:3" cx="92" cy="236" r="12"/><circle class="gn n1" style="--i:4" cx="370" cy="240" r="19"/><circle class="gn n2" style="--i:5" cx="250" cy="282" r="11"/><circle class="gn n2" style="--i:6" cx="168" cy="58" r="9"/><circle class="gn n2" style="--i:7" cx="428" cy="166" r="10"/><circle class="gn n2" style="--i:8" cx="300" cy="44" r="8"/><g class="conflict" transform="translate(300 214)"><rect x="-58" y="-13" width="116" height="26" rx="13"/><text y="4.5" text-anchor="middle">studies disagree</text></g></svg><div class="graph-legend"><span><i class="lg-s"></i>supports</span><span><i class="lg-c"></i>contradicts</span><span><i class="lg-n"></i>newer papers are larger</span></div></div></div>
+                <div class="layer-shot"><img src="images/projects/atlas-md.jpg" alt="ATLAS-MD screenshot" loading="lazy" decoding="async" /></div><div class="view-toggle" role="group" aria-label="Choose view"><button type="button" data-view="live" aria-pressed="true">Live</button><button type="button" data-view="shot" aria-pressed="false">Screenshot</button></div>
+              </div>
+              <div class="slide-info">
+                <span class="kchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="6" r="2.2"/><circle cx="18" cy="7" r="2.2"/><circle cx="12" cy="17.5" r="2.6"/><circle cx="4.5" cy="16" r="1.6"/><path d="M8 7l7.8.6M7 8l3.8 7.2M16.9 9l-3.6 6.4M6 15.5l3.4 1.2"/></svg>Research agent · 2026</span>
+                <h3>ATLAS-MD</h3>
+                <dl class="facts">
+                  <div><dt>Result</dt><dd>Live at atlasmd.live</dd></div>
+                  <div><dt>Build</dt><dd>Maps the papers behind a clinical question while an agent reads along</dd></div>
+                  <div><dt>Stack</dt><dd><ul class="stack"><li>React</li><li>Gemini</li><li>D3.js</li></ul></dd></div>
+                </dl>
+                <div class="links-line"><a href="https://youtu.be/IdHC7GCf-JA" target="_blank" rel="noopener">Watch demo</a><a href="https://atlasmd.live/" target="_blank" rel="noopener">Live site</a><a href="https://github.com/sukritisehgal-28/ATLAS-MD" target="_blank" rel="noopener">Code</a></div>
+              </div>
+            </article>
+            <article class="slide tint-violet" id="project-interviewar" data-key="interviewar" aria-roledescription="slide" aria-label="4 of 7: InterViewAR">
+              <div class="slide-viz" data-view="live">
+                <div class="layer-live"><div class="viz viz-hud" aria-hidden="true"><div class="hud"><div class="hud-top"><span class="live-dot"></span><span class="mono">Live interview · VR</span></div><div class="hud-row"><span>Pace</span><b>132 wpm</b></div><div class="hudbar"><b class="peri" style="--w:62%"></b></div><div class="hud-row"><span>Tension</span><b>0.68</b></div><div class="hudbar"><b class="saff" style="--w:68%"></b></div><div class="cue">Cue for the recruiter · <b>Pause before your next question.</b></div></div></div></div>
+                <div class="layer-shot"><img src="images/projects/interviewar.jpg" alt="InterViewAR photo" loading="lazy" decoding="async" /></div><div class="view-toggle" role="group" aria-label="Choose view"><button type="button" data-view="live" aria-pressed="true">Live</button><button type="button" data-view="shot" aria-pressed="false">Photo</button></div><p class="stage-cap mono">Illustrative numbers</p>
+              </div>
+              <div class="slide-info">
+                <span class="kchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 9.5A2.5 2.5 0 0 1 5.5 7h13A2.5 2.5 0 0 1 21 9.5v5a2.5 2.5 0 0 1-2.5 2.5h-3.2l-1.7-2.2a2 2 0 0 0-3.2 0L8.7 17H5.5A2.5 2.5 0 0 1 3 14.5z"/><circle cx="8" cy="12" r="1.6"/><circle cx="16" cy="12" r="1.6"/></svg>VR + AI agents · 2025</span>
+                <h3>InterViewAR</h3>
+                <dl class="facts">
+                  <div><dt>Result</dt><dd>Fetch.ai track winner, CalHacks 12.0</dd></div>
+                  <div><dt>Build</dt><dd>A VR coach that helps recruiters spot candidate stress as it happens</dd></div>
+                  <div><dt>Stack</dt><dd><ul class="stack"><li>WebXR</li><li>Fetch.ai</li><li>Groq Whisper</li></ul></dd></div>
+                </dl>
+                <div class="links-line"><a href="https://medium.com/fetch-ai/agentviewar-building-empathy-into-interviews-with-fetch-ai-agents-e2c6ebb0d8ad" target="_blank" rel="noopener">Read article</a><a href="https://devpost.com/software/interviewar" target="_blank" rel="noopener">Devpost</a><a href="https://github.com/sukritisehgal-28/InterVIew-AR-Calhacks2025" target="_blank" rel="noopener">Code</a></div>
+              </div>
+            </article>
+            <article class="slide tint-leaf" id="project-omnishelf-ai" data-key="omnishelf" aria-roledescription="slide" aria-label="5 of 7: OmniShelf AI">
+              <div class="slide-viz" data-view="live">
+                <div class="layer-live"><div class="viz viz-shelf" aria-hidden="true"><svg viewBox="0 0 460 300"><rect class="prod" x="38" y="34" width="39" height="66" rx="5" fill="#F6C177"/><rect class="prod" x="87" y="34" width="39" height="66" rx="5" fill="#E88C7D"/><rect class="prod" x="136" y="34" width="39" height="66" rx="5" fill="#9CC5A1"/><rect class="prod" x="185" y="34" width="39" height="66" rx="5" fill="#8FB3E8"/><rect class="prod" x="234" y="34" width="39" height="66" rx="5" fill="#F2A7C3"/><rect class="prod" x="283" y="34" width="39" height="66" rx="5" fill="#C9B6E8"/><rect class="prod" x="332" y="34" width="39" height="66" rx="5" fill="#F6D58E"/><rect class="prod" x="381" y="34" width="39" height="66" rx="5" fill="#A3D1C6"/><rect class="prod" x="38" y="126" width="39" height="66" rx="5" fill="#8FB3E8"/><rect class="prod" x="87" y="126" width="39" height="66" rx="5" fill="#F2A7C3"/><rect class="prod" x="136" y="126" width="39" height="66" rx="5" fill="#C9B6E8"/><rect class="prod" x="185" y="126" width="39" height="66" rx="5" fill="#F6D58E"/><rect class="prod" x="332" y="126" width="39" height="66" rx="5" fill="#E88C7D"/><rect class="prod" x="381" y="126" width="39" height="66" rx="5" fill="#9CC5A1"/><rect class="prod" x="38" y="218" width="39" height="66" rx="5" fill="#F6D58E"/><rect class="prod" x="87" y="218" width="39" height="66" rx="5" fill="#A3D1C6"/><rect class="prod" x="136" y="218" width="39" height="66" rx="5" fill="#F6C177"/><rect class="prod" x="185" y="218" width="39" height="66" rx="5" fill="#E88C7D"/><rect class="prod" x="234" y="218" width="39" height="66" rx="5" fill="#9CC5A1"/><rect class="prod" x="283" y="218" width="39" height="66" rx="5" fill="#8FB3E8"/><rect class="prod" x="332" y="218" width="39" height="66" rx="5" fill="#F2A7C3"/><rect class="prod" x="381" y="218" width="39" height="66" rx="5" fill="#C9B6E8"/><rect x="26" y="103" width="408" height="5" rx="2.5" fill="#D9D9DE"/><rect x="26" y="195" width="408" height="5" rx="2.5" fill="#D9D9DE"/><rect x="26" y="287" width="408" height="5" rx="2.5" fill="#D9D9DE"/><g class="det" style="--i:0"><rect x="35" y="31" width="45" height="72" rx="6"/><text x="36" y="27">sku · .90</text></g><g class="det" style="--i:1"><rect x="182" y="31" width="45" height="72" rx="6"/><text x="183" y="27">sku · .93</text></g><g class="det" style="--i:2"><rect x="329" y="31" width="45" height="72" rx="6"/><text x="330" y="27">sku · .96</text></g><g class="det" style="--i:3"><rect x="84" y="123" width="45" height="72" rx="6"/><text x="85" y="119">sku · .99</text></g><g class="det" style="--i:4"><rect x="378" y="123" width="45" height="72" rx="6"/><text x="379" y="119">sku · .95</text></g><g class="det" style="--i:5"><rect x="133" y="215" width="45" height="72" rx="6"/><text x="134" y="211">sku · .98</text></g><g class="det" style="--i:6"><rect x="280" y="215" width="45" height="72" rx="6"/><text x="281" y="211">sku · .91</text></g><g class="gap"><rect class="gap-box" x="230" y="123" width="88" height="72" rx="7"/><g transform="translate(274 160)"><rect class="gap-tag" x="-58" y="-13" width="116" height="26" rx="13"/><text y="4.5" text-anchor="middle">out of stock</text></g></g><rect class="scan" x="20" y="20" width="420" height="2.5" rx="1.25"/></svg></div></div>
+                <div class="layer-shot"><img src="images/projects/omnishelf.jpg" alt="OmniShelf AI screenshot" loading="lazy" decoding="async" /></div><div class="view-toggle" role="group" aria-label="Choose view"><button type="button" data-view="live" aria-pressed="true">Live</button><button type="button" data-view="shot" aria-pressed="false">Screenshot</button></div>
+              </div>
+              <div class="slide-info">
+                <span class="kchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2.5 12s3.6-6.5 9.5-6.5S21.5 12 21.5 12s-3.6 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3.2"/><path d="M3 3h3M3 3v3M21 3h-3M21 3v3M3 21h3M3 21v-3M21 21h-3M21 21v-3"/></svg>Computer vision · 2025</span>
+                <h3>OmniShelf AI</h3>
+                <dl class="facts">
+                  <div><dt>Result</dt><dd>95.51% mAP@50 with fine-tuned YOLOv11</dd></div>
+                  <div><dt>Build</dt><dd>A 3-stage vision pipeline that flags empty shelves</dd></div>
+                  <div><dt>Stack</dt><dd><ul class="stack"><li>YOLOv11</li><li>FastAPI</li><li>React</li></ul></dd></div>
+                </dl>
+                <div class="links-line"><a href="https://youtu.be/DcdsqbaZNQo" target="_blank" rel="noopener">Watch demo</a><a href="https://github.com/sukritisehgal-28/OmniShelf-AI-CV" target="_blank" rel="noopener">Code</a></div>
+              </div>
+            </article>
+            <article class="slide tint-rose" id="project-secure-medical-ai" data-key="securemed" aria-roledescription="slide" aria-label="6 of 7: Secure Medical AI">
+              <div class="slide-viz" data-view="live">
+                <div class="layer-live"><div class="viz viz-doc" aria-hidden="true"><div class="doc"><div class="doc-head"><span class="mono">Clinical note · illustrative</span><span class="role">Doctor view</span></div><span class="ln" style="--w:94%;--i:0"></span><span class="ln" style="--w:88%;--i:0"></span><span class="ln hl" style="--w:70%;--i:1"></span><span class="ln" style="--w:96%;--i:0"></span><span class="ln" style="--w:82%;--i:0"></span><span class="ln hl" style="--w:60%;--i:2"></span><span class="ln" style="--w:90%;--i:0"></span><span class="ln hl" style="--w:76%;--i:3"></span><span class="ln" style="--w:54%;--i:0"></span></div><div class="sum"><span class="mono">RAG summary</span><span class="ln" style="--w:92%"></span><span class="ln" style="--w:78%"></span><span class="ln" style="--w:64%"></span><span class="src">3 sources cited</span></div></div></div>
+                <div class="layer-shot"><img src="images/projects/secure-medical-ai.jpg" alt="Secure Medical AI screenshot" loading="lazy" decoding="async" /></div><div class="view-toggle" role="group" aria-label="Choose view"><button type="button" data-view="live" aria-pressed="true">Live</button><button type="button" data-view="shot" aria-pressed="false">Screenshot</button></div>
+              </div>
+              <div class="slide-info">
+                <span class="kchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8.5 13h7M8.5 16.5h4.5"/><path d="M17.5 13.2l.6 1.4 1.4.6-1.4.6-.6 1.4-.6-1.4-1.4-.6 1.4-.6z" fill="currentColor" stroke="none"/></svg>Clinical AI · 2025</span>
+                <h3>Secure Medical AI</h3>
+                <dl class="facts">
+                  <div><dt>Result</dt><dd>Deployed on GCP for doctor and nurse workspaces</dd></div>
+                  <div><dt>Build</dt><dd>RAG summaries and semantic search over clinical notes</dd></div>
+                  <div><dt>Stack</dt><dd><ul class="stack"><li>LangChain</li><li>FAISS</li><li>FastAPI</li></ul></dd></div>
+                </dl>
+                <div class="links-line"><a href="https://youtu.be/iyclbDlEuXg" target="_blank" rel="noopener">Watch demo</a><a href="https://github.com/sukritisehgal-28/Secure-Medical-AI" target="_blank" rel="noopener">Code</a></div>
+              </div>
+            </article>
+            <article class="slide tint-teal" id="project-yoodle" data-key="yoodle" aria-roledescription="slide" aria-label="7 of 7: Yoodle">
+              <div class="slide-viz" data-view="live">
+                <div class="layer-live"><div class="viz viz-meet" aria-hidden="true"><div class="meet"><div class="vtiles"><div class="vtile"><span class="av g1">A</span></div><div class="vtile speaking"><span class="av g2">M</span><span class="wave"><b></b><b></b><b></b><b></b></span></div><div class="vtile"><span class="av g3">R</span></div><div class="vtile"><span class="av g4">S</span></div></div><div class="sidekick"><span class="mono">AI sidekick</span><div class="sk" style="--i:0"><i>Notes</i><span class="ln" style="--w:90%"></span><span class="ln" style="--w:70%"></span></div><div class="sk" style="--i:1"><i>Tasks</i><span class="ln" style="--w:80%"></span></div><div class="sk" style="--i:2"><i>Follow-ups</i><span class="ln" style="--w:60%"></span></div></div></div><span class="ghost">Ghost Room · disappears after the call</span></div></div>
+                <p class="stage-cap mono">Illustrative meeting</p>
+              </div>
+              <div class="slide-info">
+                <span class="kchip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="M15.5 10.5 21 7.5v9l-5.5-3"/></svg>Video + AI assistant</span>
+                <h3>Yoodle</h3>
+                <dl class="facts">
+                  <div><dt>Result</dt><dd>Open source and self-hostable, MIT licensed</dd></div>
+                  <div><dt>Build</dt><dd>Video meetings with an AI sidekick that writes the notes, tasks and follow-ups</dd></div>
+                  <div><dt>Stack</dt><dd><ul class="stack"><li>LiveKit</li><li>MongoDB</li><li>Redis</li><li>Docker</li></ul></dd></div>
+                </dl>
+                <p class="links-note">Demo and code links coming soon.</p>
+              </div>
+            </article>
+          </div>
+          <p class="car-count mono" aria-hidden="true"><span id="car-index">01</span> / <span id="car-total">07</span></p>
+        </div>
+        <p class="more-gh"><a class="text-link" href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener">See more of my projects on GitHub</a> <span aria-hidden="true">→</span></p>
       </div>
     </section>
 
-    <!-- Education -->
-    <section class="education" id="education" data-animate="fade-up">
-      <div class="section-header">
-        <h2>Education</h2>
-      </div>
-      <div class="education-grid">
-        <article class="education-card" data-animate="fade-up">
-          <h3>University of Colorado Boulder</h3>
-          <p>MS, Data Science — GPA: 3.8</p>
-          <p class="education-meta">Coursework: Machine Learning, Statistical Modeling, Data Mining, Datacenter Scale
-            Computing, Computer Vision</p>
-        </article>
-        <article class="education-card" data-animate="fade-up">
-          <h3>Maharaja Surajmal Institute of Technology</h3>
-          <p>B.Tech, Electronics and Communication Engineering</p>
-          <p class="education-meta">GPA: 3.9</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact" data-animate="fade-up">
-      <div class="section-header">
-        <h2>Let's Connect</h2>
-        <p>Open to collaborating on data products, intelligent analytics, and AI-driven experiences.</p>
-      </div>
-      <div class="contact-inner">
-        <div class="contact-info">
-          <a class="contact-email" href="mailto:sukritisehgal2800@gmail.com">sukritisehgal2800@gmail.com</a>
-          <a class="contact-phone" href="tel:+17209397944">720-939-7944</a>
-          <div class="contact-social">
-            <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/sukriti-sehgal28/" target="_blank" rel="noopener">LinkedIn</a>
+    <!-- Closing call to action -->
+    <section class="cta-sec" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="cta reveal">
+          <svg class="cta-star" viewBox="-40 -40 80 80" aria-hidden="true"><path d="M0,-34 C5,-9 9,-5 34,0 C9,5 5,9 0,34 C-5,9 -9,5 -34,0 C-9,-5 -5,-9 0,-34 Z"/></svg>
+          <div class="cta-copy">
+            <h2 id="contact-title">Let's build something<br />people actually use.</h2>
+            <p>Open to AI/ML engineering, applied AI, data science and AI product roles.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn btn-light" href="mailto:sukritisehgal2800@gmail.com"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>Email me</a>
+            <a class="btn btn-light" href="https://calendar.app.google/jkD169VRaqfqENtb9" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Book a call</a>
+            <a class="btn btn-light" href="https://www.linkedin.com/in/sukriti-sehgal28/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn btn-light" href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-light" href="https://www.youtube.com/@SukritiSehgal-2800" target="_blank" rel="noopener">YouTube</a>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer" data-animate="fade-up">
-    <div class="footer-inner">
-      <p>© <span id="current-year"></span> Sukriti Sehgal</p>
-      <nav class="footer-nav" aria-label="Footer">
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div class="footer-brand">
+        <b>Sukriti Sehgal</b>
+        <span>AI/ML Engineer · open to roles anywhere</span>
+        <a class="mono" href="mailto:sukritisehgal2800@gmail.com">sukritisehgal2800@gmail.com</a>
+      </div>
+      <div class="footer-col">
+        <span class="lbl">On this site</span>
+        <a href="#agents">Ask my agents</a>
+        <a href="#journey">Journey</a>
         <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="Toggle theme" data-theme-toggle-footer>
-        <span class="theme-icon" aria-hidden="true"></span>
-        <span class="theme-label">Light</span>
-      </button>
+        <a href="gallery.html">Gallery</a>
+      </div>
+      <div class="footer-col">
+        <span class="lbl">Elsewhere</span>
+        <a href="https://www.linkedin.com/in/sukriti-sehgal28/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/sukritisehgal-28" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.youtube.com/@SukritiSehgal-2800" target="_blank" rel="noopener">YouTube</a>
+        <a href="assets/Sukriti_Resume.pdf" download>Résumé</a>
+      </div>
     </div>
+    <div class="wrap footer-bottom">
+      <span>© <span id="year">2026</span> Sukriti Sehgal</span>
+      <a href="gallery.html">See the gallery <span aria-hidden="true">→</span></a>
+    </div>
+    <a class="wordmark" id="wordmark" href="gallery.html" aria-label="Open the photo gallery">
+      <span class="wm-layer" aria-hidden="true">Sukriti</span>
+    </a>
   </footer>
 
-  <script src="particles.js"></script>
-  <script src="app.js" defer></script>
+  <!-- Journey details pop-up -->
+  <dialog class="exp-dialog" id="exp-dialog" aria-labelledby="exp-title" data-lenis-prevent>
+    <div class="exp-inner">
+      <button class="exp-close" type="button" aria-label="Close details" data-close>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+      <span class="exp-kind" id="exp-kind"></span>
+      <h3 id="exp-title"></h3>
+      <p class="exp-meta mono" id="exp-meta"></p>
+      <p class="exp-summary" id="exp-summary"></p>
+      <ul class="exp-bullets" id="exp-bullets"></ul>
+      <ul class="exp-tags" id="exp-tags" aria-label="Skills"></ul>
+      <div class="exp-links" id="exp-links"></div>
+      <div class="exp-nav">
+        <button type="button" class="btn btn-light btn-sm" id="exp-prev">← Newer</button>
+        <span class="mono" id="exp-count"></span>
+        <button type="button" class="btn btn-light btn-sm" id="exp-next">Older →</button>
+      </div>
+    </div>
+  </dialog>
 
-  <!-- Vercel Analytics -->
+  <script type="module" src="app.js"></script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <!-- Vercel Speed Insights -->
   <script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 
