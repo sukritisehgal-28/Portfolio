@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sukriti-sehgal-portfolio.vercel.app/</loc>
+    <loc>https://sukritisehgal.me/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://sukriti-sehgal-portfolio.vercel.app/gallery.html</loc>
+    <loc>https://sukritisehgal.me/gallery.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
