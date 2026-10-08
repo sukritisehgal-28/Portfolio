@@ -1,10 +1,12 @@
 // Single source of truth for the portfolio's facts.
 // Used by the journey pop-ups, the offline answerer, and the agents API (api/ask.js).
-// `start` is YYYY-MM when known, or null when the date hasn't been confirmed yet.
+// `start` is YYYY-MM (or YYYY) when known, or null when the date hasn't been confirmed yet.
+// `roles` (optional) splits one entry into the positions held there, newest first;
+// the pop-up shows each one under its own heading.
 
 export const PROFILE = {
   name: 'Sukriti Sehgal',
-  headline: 'AI/ML Engineer and Co-Founder of Oriva Health',
+  headline: 'Founder & CEO of Oriva Health and AI engineer',
   location: 'anywhere',
   email: 'sukritisehgal2800@gmail.com',
   links: {
@@ -14,12 +16,56 @@ export const PROFILE = {
     resume: 'assets/Sukriti_Resume.pdf',
   },
   summary:
-    'Sukriti builds AI systems that work in the real world: agentic workflows, clinical triage, computer vision and research tools, taken from prototype to tested product. She co-founded Oriva Health, holds an MS in Data Science from CU Boulder (2026), and has won two hackathons in the last year.',
+    'Sukriti is a founder and AI engineer who builds clinical AI, from the decision engine and LLM pipeline to the clinic workflow it runs in. She founded Oriva Health, now working with 2 design-partner dental clinics, holds an MS in Data Science from CU Boulder (2026), and has won two hackathons in the last year.',
 };
 
 // Journey, newest first. `kind` drives the colour on the timeline:
 // rec = recognition, founder, exp = experience, edu = education.
 export const JOURNEY = [
+  {
+    id: 'oriva-health',
+    kind: 'founder',
+    when: '2026 – Now',
+    start: '2026-04',
+    title: 'Founder & CEO',
+    org: 'Oriva Health',
+    location: 'San Francisco, CA',
+    summary:
+      'Clinical AI for dental practices: a triage engine, a voice agent and the booking behind them. It started as a CU Boulder venture and now works with real clinics.',
+    roles: [
+      {
+        title: 'Founder & CEO',
+        when: 'Oct 2026 – Now',
+        org: 'Oriva Health',
+        location: 'San Francisco, CA',
+        bullets: [
+          'Runs Oriva, a clinical AI platform working with 2 design-partner dental clinics.',
+          "Veronica, Oriva's voice agent (built by Oriva's CTO, not by Sukriti), has taken real patient calls since September 2026 and books visits through the scheduler Sukriti built.",
+          'Leading the next build: practice-management integration and new AI agents for post-visit notes, treatment plans and follow-ups.',
+        ],
+      },
+      {
+        title: 'Founder & AI Engineer',
+        when: 'Apr 2026 – Sep 2026',
+        org: 'CU Boulder venture (Catalyze CU, NSF I-Corps)',
+        location: 'Boulder, CO',
+        bullets: [
+          'Built the clinical engine (Python, FastAPI, Cloud Run) from AAE guidelines and the research literature, refined with CU Anschutz faculty. It asks adaptive follow-up questions and returns a confidence level and an urgency band.',
+          'Kept the LLM out of clinical decisions: Claude Haiku 4.5 only turns what patients say into structured answers, and a safety layer checks for red flags on every turn and tells anyone with breathing or swallowing trouble to call 911.',
+          'Built a voicemail triage service (Twilio, Deepgram Nova-3, Claude Haiku 4.5 with schema-constrained JSON) that sorts messages by intent, pulls out caller, patient, callback number and dates, and flags emergencies, falling back to Gemini and then keyword rules.',
+          'Created the Smart Questionnaire (Next.js, React), where patients tap painful teeth on a jaw map and answer 6 to 15 adaptive questions, plus a booking service (FastAPI, PostgreSQL, Cloud Tasks) that books slots and schedules outbound calls.',
+          'Wrote an automated evaluation harness over a 459-case labelled set, mostly from published dental case reports, tracking top-1 and top-3 accuracy, urgency accuracy and calibration. Every engine decision is audit-logged.',
+          'Ran 60+ NSF I-Corps interviews with dentists, hygienists and front-desk staff, shadowed a clinic front desk for a day, widened the product from emergencies to routine care, and signed 7 letters of intent.',
+        ],
+      },
+    ],
+    bullets: [
+      '$25K equity-free from the Catalyze CU accelerator; NSF I-Corps Fellow (Starting Blocks and R2M).',
+      'Finalist at Boulder Startup Week, TiE Women Silicon Valley semifinalist, and part of the Chicago Venture Summit 2026 Future of Health portfolio.',
+    ],
+    tags: ['Clinical AI', 'Claude', 'FastAPI', 'Next.js', 'Twilio', 'Deepgram', 'PostgreSQL', 'Cloud Run', 'Customer discovery'],
+    links: [{ label: 'Demo video', url: 'https://youtu.be/rP_-zpdLY78' }, { label: 'Website', url: 'https://www.oriva.health/' }],
+  },
   {
     id: 'healthcare-ai-hackathon',
     kind: 'rec',
@@ -34,8 +80,9 @@ export const JOURNEY = [
       "Won 2nd Place overall and the People's Choice Award.",
       'One AI voice agent per hospital calls in parallel and reads each answer back until the hospital confirms it; plain code, not the AI, ranks the confirmed yeses by time to treatment.',
       'One tap connects the doctors, and the patient travels with an encrypted HL7 FHIR transfer record shared as a SMART Health Link that expires after 24 hours.',
+      'Split the backend into six FastAPI microservices (call coordination, voice, live event streaming and the FHIR handoff), with one containerized voice agent per hospital (Twilio, GPT OSS on AWS Bedrock), a React map dashboard and 76 automated tests.',
     ],
-    tags: ['Python', 'FastAPI', 'React', 'Twilio', 'AWS Bedrock', 'GCP Cloud Run'],
+    tags: ['Python', 'FastAPI', 'React', 'Twilio', 'AWS Bedrock', 'HL7 FHIR', 'GCP Cloud Run'],
     links: [
       { label: 'Watch demo', url: 'https://youtu.be/xUHAnPiojRM' },
       { label: 'Live site', url: 'https://project-uzima.vercel.app/' },
@@ -57,26 +104,6 @@ export const JOURNEY = [
     ],
     tags: ['Entrepreneurship', 'Healthcare AI'],
     links: [{ label: 'Oriva Health', url: 'https://www.oriva.health/' }],
-  },
-  {
-    id: 'oriva-health',
-    kind: 'founder',
-    when: 'Founder',
-    start: null,
-    title: 'Co-Founder',
-    org: 'Oriva Health',
-    location: 'Boulder, CO',
-    summary:
-      'Building AI infrastructure for dental practices: a clinical triage engine and a voice agent that plan the visit before the patient walks in.',
-    bullets: [
-      'Built a clinical triage engine with input from dental professionals and tested it across 1,300+ cases.',
-      'Developed English/Spanish AI voice workflows for patient calls and intake.',
-      'Ran 60+ customer discovery interviews as an NSF I-Corps Fellow; selected for NSF I-Corps Starting Blocks and R2M.',
-      'Received $25K through Catalyze CU and took the product from idea to prototype, clinical validation and real-world testing.',
-      'Pitched Oriva Health as a finalist at Boulder Startup Week.',
-    ],
-    tags: ['Clinical AI', 'Voice AI', 'FastAPI', 'GCP', 'Customer discovery'],
-    links: [{ label: 'Demo video', url: 'https://youtu.be/rP_-zpdLY78' }, { label: 'Website', url: 'https://www.oriva.health/' }],
   },
   {
     id: 'course-assistant',
@@ -107,7 +134,7 @@ export const JOURNEY = [
     summary: 'Won with InterViewAR, a VR tool that helps recruiters spot candidate stress in real time.',
     bullets: [
       'Built InterViewAR (also called AgentViewAR) in 36 hours: a Meta Quest 3 heads-up display that shows the recruiter pace, pauses and tension, with empathetic prompts and next-question suggestions.',
-      'Used Fetch.ai agents for the recruiter and the candidate to coordinate speech events and tension scoring, with Groq Whisper transcription and a FastAPI + ChromaDB backend.',
+      'Built the real-time backend: seven Fetch.ai agents turn live mic audio into pace, filler-word and tension scores and push coaching cues to the WebXR HUD every 1.5 seconds, batching speech by silence before Groq Whisper.',
       'Won the Fetch.ai sponsor track, and co-wrote the project write-up published on Fetch.ai\'s Medium.',
     ],
     tags: ['WebXR', 'Fetch.ai', 'Groq Whisper', 'FastAPI', 'ChromaDB'],
@@ -125,12 +152,11 @@ export const JOURNEY = [
     title: 'Data Analytics Intern',
     org: 'C5 Consultare / University of Denver',
     location: 'Arvada, CO',
-    summary: 'ROI analytics for higher-education programs across national datasets.',
+    summary: 'Worked with a PhD researcher on whether college pays off.',
     bullets: [
-      'Integrated multi-source national datasets (100K+ records) from College Scorecard, FREOPP outcomes and cost-of-living benchmarks using Python, SQL and Excel.',
-      'Built an ROI analytics framework computing 15+ metrics across repayment capacity, debt burden and institutional outcomes.',
-      'Validated repayment-risk drivers with regression analysis in Python.',
-      'Built charts and sensitivity analyses across 4.99%–8.05% interest-rate scenarios with Excel models, SQL extracts and Power BI.',
+      'Merged national debt and earnings data (100K+ records from College Scorecard, FREOPP outcomes and cost-of-living benchmarks) and modeled which programs leave graduates in financial distress.',
+      'Built an ROI framework of 15+ metrics across repayment capacity, debt burden and institutional outcomes, and validated repayment-risk drivers with regression in Python.',
+      'Shipped a searchable dashboard, then presented the findings to client executives in Power BI.',
     ],
     tags: ['Python', 'SQL', 'Excel', 'Power BI', 'Regression'],
     links: [],
@@ -141,17 +167,15 @@ export const JOURNEY = [
     when: '2025 – 2026',
     start: '2025-06',
     title: 'Data Science & AI Intern',
-    org: 'GoodieBag Food Co.',
+    org: 'GoodieBag Food Co. (Techstars-backed)',
     location: 'Boulder, CO',
-    summary: 'AI agents, analytics and a production chatbot for a food-tech startup.',
+    summary: 'The first AI support chatbot, a marketing agent and company-wide analytics for a food company with 180K+ customers.',
     bullets: [
-      'Improved marketing content throughput by 55% with a LangChain multi-agent pipeline that analyzes images to generate trend-aware captions and hashtags.',
-      'Engineered SQL pipelines computing 20+ KPIs for weekly reporting to 10 stakeholders.',
-      'Delivered Tableau dashboards for ROI, engagement and retention across 7+ campaigns, reaching 10K+ active app users.',
-      'Reduced manual triage effort by 40% with a production chatbot across Flutter and FastAPI, with PostgreSQL persistence and HubSpot CRM sync.',
-      'Automated tagging, summarization and handoff with n8n pipelines and coordinated AI agents.',
+      "Shipped the company's first AI support chatbot (RAG on PostgreSQL/pgvector, FastAPI, HubSpot integration). It resolves routine tickets on its own and flags likely fraud, cutting manual triage by 70%.",
+      "Developed a multimodal agent that turns product photos into ready-to-post marketing content, raising the team's content output by 55%.",
+      'Set up the company-wide Tableau analytics platform (SQL pipelines, 20+ KPIs) that staff used to track sales, partner onboarding and orders.',
     ],
-    tags: ['LangChain', 'SQL', 'Tableau', 'FastAPI', 'PostgreSQL', 'n8n'],
+    tags: ['RAG', 'pgvector', 'FastAPI', 'PostgreSQL', 'HubSpot', 'SQL', 'Tableau'],
     links: [],
   },
   {
@@ -162,13 +186,27 @@ export const JOURNEY = [
     title: 'MS, Data Science',
     org: 'University of Colorado Boulder',
     location: 'Boulder, CO',
-    summary: 'Graduated in 2026 with a 3.8 GPA.',
+    summary: 'Graduated in May 2026 with a 3.8 GPA.',
     bullets: [
       'Coursework: Machine Learning, Statistical Modeling, Data Mining, Datacenter-Scale Computing, Computer Vision.',
       'Chair of the Data Science Student Association (DaSSA): led workshops, speaker events and Data Science Field Day.',
+      'Course Assistant: taught 12 labs in Python, R and Excel to 120+ students.',
       'Competed at HackCU.',
     ],
     tags: ['Machine Learning', 'Statistics', 'Data Mining', 'Computer Vision'],
+    links: [],
+  },
+  {
+    id: 'ieee-access',
+    kind: 'rec',
+    when: '2024',
+    start: '2024',
+    title: 'Published in IEEE Access',
+    org: 'IEEE Access (peer-reviewed)',
+    location: 'Journal',
+    summary: 'Co-author of a usability study of payment apps with 15 visually impaired participants.',
+    bullets: [],
+    tags: ['Accessibility', 'Usability research'],
     links: [],
   },
   {
@@ -313,8 +351,11 @@ export const RECOGNITION = [
   { title: 'CalHacks 12.0: Winner, Fetch.ai track (InterViewAR)', when: 'Oct 2025' },
   { title: 'CU Innovation Day: Feature Innovator', when: null },
   { title: 'Boulder Startup Week: Finalist pitch for Oriva Health', when: null },
+  { title: 'TiE Women Silicon Valley: Semifinalist with Oriva Health', when: null },
+  { title: 'Chicago Venture Summit 2026: Future of Health portfolio (Oriva Health)', when: '2026' },
   { title: 'NSF I-Corps Fellow (Starting Blocks and R2M)', when: null },
-  { title: 'Catalyze CU: $25K award for Oriva Health', when: null },
+  { title: 'Catalyze CU accelerator: $25K equity-free for Oriva Health', when: null },
+  { title: 'IEEE Access (peer-reviewed): co-author of a usability study of payment apps with 15 visually impaired participants', when: '2024' },
   { title: 'Judge at a UC Berkeley hackathon', when: null },
   { title: 'Chair, Data Science Student Association (DaSSA), CU Boulder', when: null },
   { title: 'Certified Artificial Intelligence Engineer (USAII)', when: null },
@@ -322,10 +363,10 @@ export const RECOGNITION = [
 ];
 
 export const SKILLS = {
-  Languages: ['Python', 'SQL (T-SQL, SparkSQL, HiveQL)', 'R', 'Dart'],
-  'ML & AI': ['scikit-learn', 'TensorFlow', 'PyTorch', 'Hugging Face', 'LangChain', 'NLP', 'Computer Vision', 'Time series', 'AI agents', 'RAG'],
-  'Data & Backend': ['PostgreSQL', 'MySQL', 'MongoDB', 'ETL', 'FastAPI', 'n8n', 'HubSpot'],
-  'Cloud & Tools': ['AWS', 'GCP', 'Azure', 'Docker', 'Git', 'Tableau', 'Power BI', 'Excel'],
+  'AI & LLMs': ['Claude', 'Gemini', 'AWS Bedrock', 'Deepgram', 'RAG (pgvector, FAISS)', 'Tool calling', 'Structured outputs', 'Multi-agent systems', 'LLM evals'],
+  'Engineering & Data': ['Python', 'SQL', 'FastAPI', 'PostgreSQL', 'Next.js', 'React', 'Docker', 'Google Cloud', 'pandas', 'R', 'scikit-learn', 'Tableau', 'Power BI'],
+  'Product & Healthcare': ['Customer discovery', 'Workflow mapping', 'User testing', 'Clinical workflows', 'HL7 FHIR', 'HIPAA', 'Audit logging'],
+  'Also used': ['PyTorch', 'TensorFlow', 'Hugging Face', 'LangChain', 'Computer vision', 'NLP', 'MongoDB', 'AWS', 'Azure', 'n8n'],
 };
 
 export const CAREERS = {

@@ -15,7 +15,7 @@ export const AGENTS = [
 const KEYWORDS = {
   experience: ['work', 'worked', 'job', 'intern', 'experience', 'company', 'companies', 'founder', 'founded', 'startup', 'done', 'career', 'history', 'teach', 'assistant', 'oriva', 'goodiebag', 'drdo', 'omdena', 'c5', 'niti', 'research'],
   projects: ['project', 'projects', 'built', 'build', 'made', 'make', 'demo', 'github', 'uzima', 'atlas', 'omnishelf', 'interviewar', 'secure medical', 'yoodle', 'app', 'code', 'portfolio', 'strongest', 'best'],
-  recognition: ['award', 'awards', 'won', 'win', 'winner', 'hackathon', 'recogn', 'prize', 'fellow', 'nsf', 'catalyze', 'calhacks', 'finalist', 'judge', 'honor', 'achievement', 'certif'],
+  recognition: ['award', 'awards', 'won', 'win', 'winner', 'hackathon', 'recogn', 'prize', 'fellow', 'nsf', 'catalyze', 'calhacks', 'finalist', 'semifinalist', 'judge', 'honor', 'achievement', 'certif', 'publication', 'published', 'paper', 'ieee', 'tie women', 'venture summit'],
   education: ['study', 'studied', 'degree', 'school', 'university', 'education', 'gpa', 'course', 'masters', 'ms ', 'b.tech', 'btech', 'graduat', 'skill', 'skills', 'stack', 'tools', 'language', 'python', 'sql', 'tensorflow', 'pytorch', 'tech'],
   careers: ['hire', 'hiring', 'open', 'available', 'availability', 'role', 'roles', 'looking', 'contact', 'email', 'reach', 'relocat', 'location', 'based', 'resume', 'cv', 'linkedin'],
 };
@@ -23,7 +23,7 @@ const KEYWORDS = {
 const NUMBER_WORDS = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
 
 // Years used only for "past N years" filtering of undated items.
-const APPROX_YEAR = { 'cu-innovation-day': 2026, 'oriva-health': 2025, 'niti-aayog': 2022 };
+const APPROX_YEAR = { 'cu-innovation-day': 2026, 'niti-aayog': 2022 };
 
 const yearOf = (item) => (item.start ? Number(item.start.slice(0, 4)) : APPROX_YEAR[item.id] ?? null);
 
@@ -54,7 +54,7 @@ const JOURNEY_ALIASES = {
   drdo: 'drdo', omdena: 'omdena', niti: 'niti-aayog', calhacks: 'calhacks', 'cal hacks': 'calhacks',
   'innovation day': 'cu-innovation-day', 'course assistant': 'course-assistant', teaching: 'course-assistant',
   msit: 'btech', 'b.tech': 'btech', btech: 'btech', bachelor: 'btech', 'healthcare ai hackathon': 'healthcare-ai-hackathon',
-  'aws builder': 'healthcare-ai-hackathon',
+  'aws builder': 'healthcare-ai-hackathon', ieee: 'ieee-access', publication: 'ieee-access', 'published': 'ieee-access',
 };
 const PROJECT_ALIASES = {
   uzima: 'Project Uzima', atlas: 'ATLAS-MD', omnishelf: 'OmniShelf AI', interviewar: 'InterViewAR', 'secure medical': 'Secure Medical AI', yoodle: 'Yoodle',

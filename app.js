@@ -518,6 +518,30 @@ const fillDialog = (i) => {
   el('exp-title').textContent = item.title;
   el('exp-meta').textContent = [item.org, item.location, item.start ? item.when : null].filter(Boolean).join(' · ');
   el('exp-summary').textContent = item.summary;
+  // One entry can hold several positions (a promotion, a company that grew): one heading each, newest first
+  const roles = el('exp-roles');
+  roles.textContent = '';
+  (item.roles ?? []).forEach((role) => {
+    const section = document.createElement('section');
+    section.className = 'exp-role';
+    const head = document.createElement('div');
+    head.className = 'exp-role-head';
+    const title = document.createElement('h4');
+    title.textContent = role.title;
+    const when = document.createElement('span');
+    when.className = 'mono';
+    when.textContent = role.when;
+    head.append(title, when);
+    const meta = document.createElement('p');
+    meta.className = 'exp-role-meta mono';
+    meta.textContent = [role.org, role.location].filter(Boolean).join(' · ');
+    const bullets = document.createElement('ul');
+    bullets.className = 'exp-bullets';
+    listItems(bullets, role.bullets);
+    section.append(head, meta, bullets);
+    roles.append(section);
+  });
+  el('exp-bullets-label').hidden = !(item.roles?.length && item.bullets.length);
   listItems(el('exp-bullets'), item.bullets);
   listItems(el('exp-tags'), item.tags);
   const links = el('exp-links');
