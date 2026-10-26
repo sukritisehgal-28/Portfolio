@@ -339,11 +339,11 @@ export const PROJECTS = [
   {
     name: 'Yoodle',
     short: 'Video meetings with an AI sidekick that writes the notes, tasks and follow-ups.',
-    result: 'Open source and self-hostable, MIT licensed',
+    result: 'Built at HackCU with Uditanshu Tomar',
     kicker: 'Video meetings · AI assistant',
-    description: 'An open-source video collaboration platform: HD video calls, an AI meeting assistant that writes notes, tasks and follow-ups, shared workspaces, and ephemeral Ghost Rooms for brainstorming. Self-hostable and MIT licensed.',
+    description: 'A video collaboration platform built at HackCU with Uditanshu Tomar: HD video calls, an AI meeting assistant that writes notes, tasks and follow-ups, shared workspaces, and ephemeral Ghost Rooms for brainstorming. Self-hostable with Docker.',
     stack: ['LiveKit', 'MongoDB', 'Redis', 'Docker'],
-    links: [],
+    links: [{ label: 'Code', url: 'https://github.com/sukritisehgal-28/Yoodle-HackCU' }],
   },
 ];
 
