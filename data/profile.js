@@ -332,7 +332,8 @@ export const PROJECTS = [
     stack: ['LangChain', 'FAISS', 'FastAPI', 'GCP'],
     links: [
       { label: 'Demo', url: 'https://youtu.be/iyclbDlEuXg' },
-      { label: 'Code', url: 'https://github.com/sukritisehgal-28/Secure-Medical-AI' },
+      { label: 'Live', url: 'https://sukritisehgal-28.github.io/Secure-med-ai/' },
+      { label: 'Code', url: 'https://github.com/sukritisehgal-28/Secure-med-ai' },
     ],
   },
   {
