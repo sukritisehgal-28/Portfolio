@@ -85,8 +85,8 @@ export const JOURNEY = [
     tags: ['Python', 'FastAPI', 'React', 'Twilio', 'AWS Bedrock', 'HL7 FHIR', 'GCP Cloud Run'],
     links: [
       { label: 'Watch demo', url: 'https://youtu.be/xUHAnPiojRM' },
-      { label: 'Live site', url: 'https://project-uzima.vercel.app/' },
-      { label: 'Code', url: 'https://github.com/sukritisehgal-28/project-uzima' },
+      { label: 'Live site', url: 'https://uzima-health.vercel.app/' },
+      { label: 'Code', url: 'https://github.com/sukritisehgal-28/uzima-health' },
     ],
   },
   {
@@ -281,8 +281,8 @@ export const PROJECTS = [
     stack: ['Python', 'FastAPI', 'AWS Bedrock', 'Twilio'],
     links: [
       { label: 'Demo', url: 'https://youtu.be/xUHAnPiojRM' },
-      { label: 'Live', url: 'https://project-uzima.vercel.app/' },
-      { label: 'Code', url: 'https://github.com/sukritisehgal-28/project-uzima' },
+      { label: 'Live', url: 'https://uzima-health.vercel.app/' },
+      { label: 'Code', url: 'https://github.com/sukritisehgal-28/uzima-health' },
     ],
   },
   {
